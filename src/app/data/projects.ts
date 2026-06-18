@@ -285,7 +285,7 @@ export const projects: Project[] = [
     tags: ["Healthcare", "Pharmacy", "ERP"],
     mockupBg: "#ECFDF5",
     mockupPattern: "health",
-    pdfUrl: "/pdf/file-sample_150kB.pdf",
+    pdfUrl: "/pdf/Lifeplus_Model_Pharma_Doc_White.pdf",
     siteUrl: "",
   },
 
@@ -379,7 +379,7 @@ export const projects: Project[] = [
     tags: ["Real Estate", "PropTech", "CRM"],
     mockupBg: "#FFF0F7",
     mockupPattern: "realestate",
-    pdfUrl: "/pdf/file-sample_150kB.pdf",
+    pdfUrl: "/pdf/Virtual_Estate_Overview.pdf",
     siteUrl: "https://estate.lifeplusbd.tech/",
   },
 
