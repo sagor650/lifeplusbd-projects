@@ -93,7 +93,7 @@ export function PDFViewer({ project, onClose }: PDFViewerProps) {
             <div
               className="relative w-full flex flex-col rounded-2xl overflow-hidden pointer-events-auto"
               style={{
-                maxWidth: "1400px",
+                maxWidth: "960px",
                 height: "88vh",
                 boxShadow:
                   "0 32px 80px rgba(0,0,0,0.35), 0 4px 24px rgba(0,0,0,0.15)",

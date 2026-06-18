@@ -2,8 +2,8 @@ import assetVaultImg from "../../imports/asset-vault.png";
 import digitalTwinImg from "../../imports/digital-twin.png";
 import digitalRmImg from "../../imports/digital-rm.png";
 import optiPanelImg from "../../imports/opti-panel.png";
-import lifeEstateImg from "../../imports/life-estate.png";
-import lifeTourismImg from "../../imports/life-tourism.png";
+import virtuState from "../../imports/virtuState.png";
+import virtuTour from "../../imports/virtuTour.png";
 import lifeplusHubImg from "../../imports/lifeplus-hub.png";
 import pmsImg from "../../imports/pms.png";
 
@@ -337,12 +337,12 @@ export const projects: Project[] = [
   },
 
   {
-    id: "life-estate",
-    name: "Life Estate",
+    id: "virtustate",
+    name: "VirtuState",
     category: "Real Estate · Property Tech",
     tagline: "Smart digital platform for real estate management",
     logoInitial: "LE",
-    logo: lifeEstateImg,
+    logo: virtuState,
     logoColor: "#EC4899",
     accentColor: "#EC4899",
     cardBg: "linear-gradient(135deg, #FFF0F7 0%, #FCE7F3 100%)",
@@ -380,16 +380,16 @@ export const projects: Project[] = [
     mockupBg: "#FFF0F7",
     mockupPattern: "realestate",
     pdfUrl: "/pdf/file-sample_150kB.pdf",
-    siteUrl: "",
+    siteUrl: "https://estate.lifeplusbd.tech/",
   },
 
   {
-    id: "life-tourism",
-    name: "Life Tourism",
-    category: "Travel · Tourism Platform",
-    tagline: "Smart travel planning and booking system",
+    id: "virtutour",
+    name: "VirtuTour",
+    category: "VR . Platform",
+    tagline: "Smart VR travel planning and booking system",
     logoInitial: "LT",
-    logo: lifeTourismImg,
+    logo: virtuTour,
     logoColor: "#14B8A6",
     accentColor: "#14B8A6",
     cardBg: "linear-gradient(135deg, #EDFAFA 0%, #CCFBF1 100%)",
@@ -397,7 +397,7 @@ export const projects: Project[] = [
     duration: "Ongoing",
     role: "Product & Engineering",
     overview:
-      "Life Tourism is a travel platform offering smart booking, itinerary planning, and tourism service management.",
+      "VirtuTour is a travel platform offering smart booking, itinerary planning, and tourism service management.",
     problem:
       "Travel planning is fragmented across multiple platforms, making it inefficient for users.",
     process: [
@@ -427,6 +427,6 @@ export const projects: Project[] = [
     mockupBg: "#EDFAFA",
     mockupPattern: "travel",
     pdfUrl: "/pdf/file-sample_150kB.pdf",
-    siteUrl: "",
+    siteUrl: "https://tourism.lifeplusbd.tech/",
   },
 ];
