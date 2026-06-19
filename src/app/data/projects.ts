@@ -4,8 +4,8 @@ import digitalTwinImg from "../../imports/digital-twin.png";
 import lifeplusHubImg from "../../imports/lifeplus-hub.png";
 import optiPanelImg from "../../imports/opti-panel.png";
 import pmsImg from "../../imports/pms.png";
-import virtuState from "../../imports/virtuState.png";
-import virtuTour from "../../imports/virtuTour.png";
+import virtuState from "../../imports/virtu-state.png";
+import virtuTour from "../../imports/virtu-tour.png";
 
 export interface Project {
   id: string;
