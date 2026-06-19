@@ -1,11 +1,11 @@
 import assetVaultImg from "../../imports/asset-vault.png";
-import digitalTwinImg from "../../imports/digital-twin.png";
 import digitalRmImg from "../../imports/digital-rm.png";
+import digitalTwinImg from "../../imports/digital-twin.png";
+import lifeplusHubImg from "../../imports/lifeplus-hub.png";
 import optiPanelImg from "../../imports/opti-panel.png";
+import pmsImg from "../../imports/pms.png";
 import virtuState from "../../imports/virtuState.png";
 import virtuTour from "../../imports/virtuTour.png";
-import lifeplusHubImg from "../../imports/lifeplus-hub.png";
-import pmsImg from "../../imports/pms.png";
 
 export interface Project {
   id: string;
@@ -29,7 +29,7 @@ export interface Project {
   mockupBg: string;
   mockupPattern: string;
   pdfUrl?: string; // path to PDF in /public/pdf/
-  siteUrl?:string;
+  siteUrl?: string;
 }
 
 export const projects: Project[] = [
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     mockupBg: "#EEF4FF",
     mockupPattern: "data",
     pdfUrl: "/pdf/file-sample_150kB.pdf",
-    siteUrl: ''
+    siteUrl: "",
   },
 
   {
@@ -220,8 +220,7 @@ export const projects: Project[] = [
       },
       {
         title: "Voice & Chat Integration",
-        description:
-          "Integrated AI with multi-channel communication systems.",
+        description: "Integrated AI with multi-channel communication systems.",
       },
     ],
     features: [
@@ -267,8 +266,7 @@ export const projects: Project[] = [
       },
       {
         title: "Billing Engine",
-        description:
-          "Built automated billing and invoice generation system.",
+        description: "Built automated billing and invoice generation system.",
       },
     ],
     features: [
@@ -314,8 +312,7 @@ export const projects: Project[] = [
       },
       {
         title: "Integration System",
-        description:
-          "Unified multiple media channels into a single platform.",
+        description: "Unified multiple media channels into a single platform.",
       },
     ],
     features: [
