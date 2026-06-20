@@ -29,14 +29,22 @@ jobs:
           set -e
 
           echo "=== Starting deployment ==="
-          if [ -d /var/www/lifeplusbd/.git ]; then
-            cd /var/www/lifeplusbd
+          if [ -d /var/www/lifeplusbd-projects/.git ]; then
+            cd /var/www/lifeplusbd-projects
             git fetch origin
             git checkout main
             git reset --hard origin/main
+          elif [ -d /var/www/lifeplusbd-projects ]; then
+            cd /var/www/lifeplusbd-projects
+            git init
+            git remote remove origin 2>/dev/null || true
+            git remote add origin https://github.com/sagor650/lifeplusbd-projects.git
+            git fetch origin
+            git checkout -B main
+            git reset --hard origin/main
           else
-            git clone https://github.com/sagor650/lifeplusbd-projects.git /var/www/lifeplusbd
-            cd /var/www/lifeplusbd
+            git clone https://github.com/sagor650/lifeplusbd-projects.git /var/www/lifeplusbd-projects
+            cd /var/www/lifeplusbd-projects
           fi
 
           echo "Installing dependencies..."
