@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowLeft, Mail, Menu, Moon, Sun } from "lucide-react";
 import logo from "../../imports/Lifeplus_tech.png";
+import { scrollToSection } from "../lib/scroll";
 
 interface NavbarProps {
   mode: "grid" | "split";
@@ -91,6 +92,7 @@ export function Navbar({ mode, isDark, onToggleDark, onBack, onOpenMobileNav, se
               {["Products", "Services", "About", "Careers", "Contact"].map((item) => (
                 <button
                   key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
                   className="px-4 h-8 rounded-lg text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
                   style={{ fontWeight: 500 }}
                 >
@@ -129,6 +131,7 @@ export function Navbar({ mode, isDark, onToggleDark, onBack, onOpenMobileNav, se
                 transition={{ duration: 0.15 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
+                onClick={() => scrollToSection("contact")}
                 className="hidden sm:flex items-center gap-1.5 px-4 h-8 rounded-xl text-white text-sm"
                 style={{ backgroundColor: "#0776BD", fontWeight: 600 }}
               >

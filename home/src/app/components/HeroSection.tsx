@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
-import { ArrowRight, Building2, Layers, Star, Users } from "lucide-react";
+import { ArrowRight, Building2, Layers, Users } from "lucide-react";
 import logo from "../../imports/Lifeplus_tech.png";
+import { scrollToSection } from "../lib/scroll";
 
 const stats = [
   { icon: Building2, value: "140+", label: "Enterprise clients" },
@@ -95,6 +96,7 @@ export function HeroSection() {
             boxShadow: "0 8px 24px rgba(7,118,189,0.25)",
           }}
           whileTap={{ scale: 0.97 }}
+          onClick={() => scrollToSection("products")}
           className="flex items-center gap-2 px-5 h-11 rounded-xl text-white text-sm transition-shadow"
           style={{ backgroundColor: "#0776BD", fontWeight: 600 }}
         >
@@ -104,6 +106,7 @@ export function HeroSection() {
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.97 }}
+          onClick={() => scrollToSection("contact")}
           className="flex items-center gap-2 px-5 h-11 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
           style={{ fontWeight: 500 }}
         >

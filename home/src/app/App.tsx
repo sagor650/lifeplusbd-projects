@@ -6,6 +6,12 @@ import { HeroSection } from "./components/HeroSection";
 import { GridView } from "./components/GridView";
 import { SplitWorkspace } from "./components/SplitWorkspace";
 import { PDFViewer } from "./components/PDFViewer";
+import {
+  ServicesSection,
+  AboutSection,
+  CareersSection,
+  ContactSection,
+} from "./components/MarketingSections";
 
 type Mode = "grid" | "split";
 
@@ -58,7 +64,13 @@ export default function App() {
               transition={{ duration: 0.25, ease: "easeOut" }}
             >
               <HeroSection />
-              <GridView onCardClick={handleCardClick} />
+              <div id="products" className="scroll-mt-20">
+                <GridView onCardClick={handleCardClick} />
+              </div>
+              <ServicesSection />
+              <AboutSection />
+              <CareersSection />
+              <ContactSection />
 
               {/* Footer */}
               <footer
