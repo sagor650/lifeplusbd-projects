@@ -1,6 +1,7 @@
 import assetVaultImg from "../../imports/asset-vault.png";
 import digitalRmImg from "../../imports/digital-rm.png";
 import digitalTwinImg from "../../imports/digital-twin.png";
+import medpacImg from "../../imports/medpac.png";
 import lifeplusHubImg from "../../imports/lifeplus-hub.png";
 import optiPanelImg from "../../imports/opti-panel.png";
 import pmsImg from "../../imports/pms.png";
@@ -150,46 +151,46 @@ export const projects: Project[] = [
 
   {
     id: "digital-twin",
-    name: "MedPAC",
-    category: "Healthcare · VNA / PACS",
-    tagline: "Vendor-neutral medical imaging archive & DICOM viewer",
+    name: "medpac",
+    category: "Healthcare · PACS + AI",
+    tagline: "PACS with a built-in AI second opinion",
     logoInitial: "MP",
-    logo: digitalTwinImg,
-    logoColor: "#60BB46",
-    accentColor: "#60BB46",
-    cardBg: "linear-gradient(135deg, #EDFAED 0%, #DCFCE7 100%)",
+    logo: medpacImg,
+    logoColor: "#D11F3C",
+    accentColor: "#D11F3C",
+    cardBg: "linear-gradient(135deg, #FFF1F3 0%, #FFE4E8 100%)",
     year: "2024",
     duration: "Ongoing",
     role: "Medical Imaging & Full-Stack Engineering",
     overview:
-      "MedPAC is a vendor-neutral archive (VNA) and PACS platform with a browser-based DICOM/medical-imaging viewer and AI-assisted analysis for radiology workflows.",
+      "medpac is a PACS (Picture Archiving & Communication System) for medical imaging with an AI second-opinion engine built in — clinicians review DICOM studies in the browser while an integrated AI model delivers an automated second read alongside.",
     problem:
-      "Hospitals run siloed, vendor-locked imaging systems that make studies hard to archive, share, and review across departments and devices.",
+      "Radiology teams are overloaded and second opinions are slow and costly, while legacy PACS stay vendor-locked and desktop-bound.",
     process: [
       {
-        title: "Imaging Ingest & Archive",
+        title: "PACS & Archive",
         description:
-          "Built a vendor-neutral archive that normalizes and stores DICOM studies from any modality.",
+          "Vendor-neutral archive and DICOMweb services that ingest and store studies from any modality.",
       },
       {
-        title: "Browser DICOM Viewer",
+        title: "AI Second Opinion",
         description:
-          "Developed a zero-install web viewer (Cornerstone) for radiology review on any device.",
+          "Integrated AI models that analyze each study and draft a structured second-read report.",
       },
     ],
     features: [
       {
-        title: "Web DICOM Viewer",
-        description: "View CT/MR/CR studies in the browser — no desktop client.",
+        title: "Browser DICOM Viewer",
+        description: "Zero-install web viewer for CT/MR/CR review on any device.",
       },
       {
-        title: "AI-Assisted Analysis",
-        description: "Automated imaging analysis and structured report drafting.",
+        title: "AI Second Opinion",
+        description: "Automated AI analysis and report drafting alongside the radiologist.",
       },
     ],
     metrics: [],
-    tags: ["VNA", "PACS", "DICOM"],
-    mockupBg: "#EDFAED",
+    tags: ["PACS", "DICOM", "AI"],
+    mockupBg: "#FFF1F3",
     mockupPattern: "health",
     pdfUrl: "/pdf/medpac-VNA-PACS.pdf",
     siteUrl: "https://medpac.lifeplusbd.tech/",
