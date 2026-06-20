@@ -29,8 +29,8 @@ jobs:
           set -e
 
           echo "=== Starting deployment ==="
-          if [ -d /var/www/lifeplusbd-projects/.git ]; then
-            cd /var/www/lifeplusbd-projects
+          if [ -d /var/www/lifeplusbd/.git ]; then
+            cd /var/www/lifeplusbd
             git fetch origin
             git checkout main
             git reset --hard origin/main
