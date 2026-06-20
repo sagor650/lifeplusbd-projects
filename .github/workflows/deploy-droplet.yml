@@ -27,34 +27,35 @@ jobs:
         run: |
           ssh -v root@146.190.81.167 << 'EOF'
           set -e
-          
+
           echo "=== Starting deployment ==="
-          cd /var/www/lifeplusbd
-          
-          echo "Pulling latest code..."
-          git fetch origin
-          git checkout main
-          git pull origin main
-          
+          if [ -d /var/www/lifeplusbd-projects/.git ]; then
+            cd /var/www/lifeplusbd-projects
+            git fetch origin
+            git checkout main
+            git reset --hard origin/main
+          else
+            git clone https://github.com/sagor650/lifeplusbd-projects.git /var/www/lifeplusbd
+            cd /var/www/lifeplusbd
+          fi
+
           echo "Installing dependencies..."
           cd home
           npm install
-          
+
           echo "Building home app..."
           npm run build
-          
+
           echo "Restarting Node app..."
-          # If using systemd service
           if systemctl list-units --all | grep -q lifeplusbd; then
-            sudo systemctl restart lifeplusbd
+            systemctl restart lifeplusbd
             echo "Service restarted via systemd"
+          elif command -v pm2 &> /dev/null; then
+            pm2 restart lifeplusbd || pm2 start --name lifeplusbd "npm run start"
+            echo "App restarted via PM2"
           else
-            # Or if PM2
-            if command -v pm2 &> /dev/null; then
-              pm2 restart lifeplusbd || pm2 start --name lifeplusbd "npm run start"
-              echo "App restarted via PM2"
-            fi
+            echo "No systemd service or PM2 found. Please start the app manually or add a service."
           fi
-          
+
           echo "Deployment complete!"
           EOF
