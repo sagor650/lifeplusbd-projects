@@ -88,7 +88,7 @@ export const projects: Project[] = [
     tags: ["Enterprise", "Security", "Data Management"],
     mockupBg: "#EEF4FF",
     mockupPattern: "data",
-    pdfUrl: "/pdf/file-sample_150kB.pdf",
+    pdfUrl: "/pdf/Lifeplus_Asset_Management_Doc.pdf",
     siteUrl: "",
   },
 
@@ -329,7 +329,7 @@ export const projects: Project[] = [
     tags: ["Media", "Communication", "Enterprise"],
     mockupBg: "#EFF6FF",
     mockupPattern: "media",
-    pdfUrl: "/pdf/file-sample_150kB.pdf",
+    pdfUrl: "/pdf/Lifeplus_Broadcast_System_Doc.pdf",
     siteUrl: "",
   },
 
