@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VirtuTour – Hotel Interior Explorer | UE5 Pixel Streaming Dashboard</title>
+  <meta name="description"
+    content="VirtuTour Hotel Interior Explorer: Immersive UE5 Pixel Streaming VR previews for luxury hotel suites. Virtual booking, headset telemetry, and 8K fidelity streaming for hospitality professionals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════ SIDEBAR ═══════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <img src="assets/VirtuTour.png" alt="VirtuTour Logo" style="width:100%;height:100%;object-fit:contain;" />
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">VirtuTour</span>
+        <span class="brand-sub">hotel_class NEXUS_VH</span>
+      </div>
+    </div>
+
+    <div class="operator-card">
+      <div class="operator-avatar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2" />
+          <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </div>
+      <div class="operator-info">
+        <span class="operator-name">Pan Pacific Sonargaon Operator</span>
+        <span class="operator-status">
+          <span class="status-dot active"></span>530ms · OPTIMAL
+        </span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-item active" href="#" id="nav-previews" data-section="hotel-previews">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="3" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" />
+          <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <span>Hotel Previews</span>
+      </a>
+      <a class="nav-item" href="#" id="nav-streams" data-section="pixel-streams">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" />
+          <path
+            d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <span>Pixel Streams</span>
+      </a>
+      <a class="nav-item" href="#" id="nav-bookings" data-section="bookings">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" />
+          <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <span>Bookings</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+      <button class="sync-btn" id="syncBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M23 4v6h-6M1 20v-6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        SYNC HEADSET
+      </button>
+      <div class="sidebar-footer-links">
+        <a class="footer-link" href="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" />
+            <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" />
+          </svg>
+          Settings
+        </a>
+        <a class="footer-link" href="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+            <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" />
+          </svg>
+          Support
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════ MAIN ═══════════════════════════════════════ -->
+  <main class="main-content" id="mainContent">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="topbar-tabs">
+        <button class="tab-btn active" id="tabPreviews" data-tab="hotel-previews">Hotel Previews</button>
+        <button class="tab-btn" id="tabStreams" data-tab="pixel-streams">Pixel Streams</button>
+        <button class="tab-btn" id="tabBookings" data-tab="bookings">Bookings</button>
+      </div>
+      <div class="topbar-actions">
+        <div class="search-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" />
+            <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search hotels, suites, streams…" />
+        </div>
+        <button class="icon-btn" id="notifBtn" title="Notifications">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="notif-dot"></span>
+        </button>
+        <div class="stream-quality-badge">
+          <span class="quality-dot"></span>
+          8K STREAM
+        </div>
+      </div>
+    </header>
+
+    <!-- ─────────── SECTION: HOTEL PREVIEWS ─────────── -->
+    <section class="section active" id="section-hotel-previews">
+
+      <div class="preview-grid">
+
+        <!-- HERO STREAM PANEL -->
+        <div class="hero-stream-panel glass-card" id="heroStream">
+          <div class="hero-media">
+            <img src="assets/pan_pacific_suite.png" alt="Pan Pacific Sonargaon Grand Suite UE5 Pixel Stream preview"
+              class="hero-img" id="heroImg" />
+            <div class="hero-overlay">
+              <div class="ue5-badge">
+                <span class="ue5-dot"></span>
+                UE5 PIXEL STREAM · 8K FIDELITY
+              </div>
+              <div class="hero-info">
+                <h1 class="hero-title" id="heroTitle">Pan Pacific Sonargaon</h1>
+                <p class="hero-subtitle" id="heroSubtitle">Grand Suite Interior – Virtual Tourism Preview</p>
+              </div>
+              <button class="launch-vr-btn" id="launchVrBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M2 8.5A3.5 3.5 0 015.5 5h13A3.5 3.5 0 0122 8.5v7A3.5 3.5 0 0118.5 19h-13A3.5 3.5 0 012 15.5v-7z"
+                    stroke="currentColor" stroke-width="2" />
+                  <circle cx="8" cy="12" r="2" stroke="currentColor" stroke-width="2" />
+                  <circle cx="16" cy="12" r="2" stroke="currentColor" stroke-width="2" />
+                  <path d="M10 12h4" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <span>LAUNCH VR PIXEL STREAM</span>
+              </button>
+            </div>
+            <!-- Live stream indicator ring -->
+            <div class="live-ring"></div>
+          </div>
+
+          <!-- STREAM METRICS BAR -->
+          <div class="metrics-bar">
+            <div class="metric-item">
+              <span class="metric-label">RENDER_LATENCY</span>
+              <span class="metric-value teal" id="latencyVal">12.4ms</span>
+              <div class="metric-bar-track">
+                <div class="metric-bar-fill teal" style="width:18%"></div>
+              </div>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">STREAM_THROUGHPUT</span>
+              <span class="metric-value amber" id="throughputVal">125Mbps</span>
+              <div class="metric-dots">
+                <span class="mdot on"></span><span class="mdot on"></span><span class="mdot on"></span><span
+                  class="mdot off"></span><span class="mdot off"></span>
+              </div>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">VERTEX_COUNT</span>
+              <span class="metric-value slate" id="vertexVal">42.8M</span>
+              <span class="metric-sub">ENGINE: UE 5.4</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">ACTIVE_VIEWERS</span>
+              <span class="metric-value dark" id="viewersVal">1,284</span>
+              <span class="metric-sub warn" id="viewersSub">MAX LOAD: 82%</span>
+            </div>
+          </div>
+
+          <!-- VIRTUAL BOOKING QUEUE -->
+          <div class="bookings-panel">
+            <div class="bookings-header">
+              <div class="bookings-title-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" />
+                  <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span>Upcoming Virtual Bookings</span>
+              </div>
+              <a href="#" class="view-all-link" id="viewAllBookings">VIEW ALL →</a>
+            </div>
+            <div class="bookings-list" id="bookingsList">
+              <!-- populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT HOTEL CARD STACK -->
+        <div class="hotel-cards-stack">
+          <div class="hotel-preview-card glass-card" data-hotel="intercontinental" id="card-intercontinental">
+            <img src="assets/intercontinental_lobby.png" alt="InterContinental Lobby pixel stream preview"
+              class="card-img" />
+            <div class="card-overlay">
+              <span class="card-name">InterContinental Lobby</span>
+              <button class="card-stream-btn stream-live" data-hotel="intercontinental">STREAM NOW →</button>
+            </div>
+            <div class="card-live-badge">LIVE</div>
+          </div>
+          <div class="hotel-preview-card glass-card" data-hotel="radisson" id="card-radisson">
+            <img src="assets/radisson_poolside.png" alt="Radisson Blu Poolside pixel stream preview" class="card-img" />
+            <div class="card-overlay">
+              <span class="card-name">Radisson Blu Poolside</span>
+              <button class="card-stream-btn" data-hotel="radisson">STREAM NOW →</button>
+            </div>
+          </div>
+          <div class="hotel-preview-card glass-card" data-hotel="sheraton" id="card-sheraton">
+            <img src="assets/sheraton_ballroom.png" alt="Sheraton Grand Ballroom pixel stream preview"
+              class="card-img" />
+            <div class="card-overlay">
+              <span class="card-name">Sheraton Grand Ballroom</span>
+              <button class="card-stream-btn" data-hotel="sheraton">STREAM NOW →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ─────────── SECTION: PIXEL STREAMS ─────────── -->
+    <section class="section" id="section-pixel-streams">
+      <div class="section-header">
+        <h2 class="section-title">Pixel Stream Management</h2>
+        <button class="action-btn primary" id="newStreamBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+          </svg>
+          NEW STREAM
+        </button>
+      </div>
+
+      <div class="streams-grid" id="streamsGrid">
+        <!-- populated by JS -->
+      </div>
+
+      <div class="stream-config-panel glass-card">
+        <h3 class="panel-title">Stream Configuration · UE5 Signaling Server</h3>
+        <div class="config-grid">
+          <div class="config-item">
+            <label class="config-label">Signaling Server URL</label>
+            <div class="config-input-row">
+              <input type="text" class="config-input" id="signalingUrl" value="wss://ue5.virtutour.bd:8888" readonly />
+              <button class="config-copy-btn" id="copySignaling" title="Copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2" />
+                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="config-item">
+            <label class="config-label">Target Bitrate</label>
+            <select class="config-select" id="bitrateSelect">
+              <option value="50">50 Mbps – Standard HD</option>
+              <option value="100">100 Mbps – Ultra HD</option>
+              <option value="200" selected>200 Mbps – 8K Fidelity</option>
+              <option value="400">400 Mbps – Lossless Master</option>
+            </select>
+          </div>
+          <div class="config-item">
+            <label class="config-label">Codec</label>
+            <select class="config-select" id="codecSelect">
+              <option value="h264">H.264 AVC</option>
+              <option value="h265" selected>H.265 HEVC</option>
+              <option value="av1">AV1 (Beta)</option>
+            </select>
+          </div>
+          <div class="config-item">
+            <label class="config-label">Bangladesh Hub Region</label>
+            <select class="config-select" id="regionSelect">
+              <option value="dhaka" selected>Dhaka – Primary Hub</option>
+              <option value="ctg">Chattogram – Edge Node</option>
+              <option value="sylhet">Sylhet – Edge Node</option>
+            </select>
+          </div>
+        </div>
+        <div class="config-actions">
+          <button class="action-btn secondary" id="testConnectionBtn">TEST CONNECTION</button>
+          <button class="action-btn primary" id="applyConfigBtn">APPLY CONFIG</button>
+        </div>
+        <div class="connection-status-bar" id="connectionStatusBar">
+          <span class="conn-dot green"></span>
+          <span class="conn-text">Signaling server active · Bangladesh Hub · RTT 4.2ms</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── SECTION: BOOKINGS ─────────── -->
+    <section class="section" id="section-bookings">
+      <div class="section-header">
+        <h2 class="section-title">Virtual Room Bookings</h2>
+        <button class="action-btn primary" id="newBookingBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+          </svg>
+          NEW BOOKING
+        </button>
+      </div>
+
+      <div class="bookings-full-list glass-card" id="bookingsFullList">
+        <!-- populated by JS -->
+      </div>
+
+      <!-- VR PRE-VISIT PANEL -->
+      <div class="vr-prebook-panel glass-card">
+        <div class="prebook-header">
+          <div class="prebook-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path d="M2 8.5A3.5 3.5 0 015.5 5h13A3.5 3.5 0 0122 8.5v7A3.5 3.5 0 0118.5 19h-13A3.5 3.5 0 012 15.5v-7z"
+                stroke="currentColor" stroke-width="2" />
+              <circle cx="8" cy="12" r="2" stroke="currentColor" stroke-width="2" />
+              <circle cx="16" cy="12" r="2" stroke="currentColor" stroke-width="2" />
+              <path d="M10 12h4" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="panel-title">Virtual Pre-Visit Workflow</h3>
+            <p class="panel-desc">Allow guests to explore their suite in UE5 VR before confirming their reservation</p>
+          </div>
+        </div>
+        <div class="prebook-steps">
+          <div class="step-item active">
+            <div class="step-num">01</div>
+            <div class="step-text">
+              <strong>Select Suite</strong>
+              <span>Guest picks from available VR-enabled rooms</span>
+            </div>
+            <div class="step-status done">COMPLETE</div>
+          </div>
+          <div class="step-item active">
+            <div class="step-num">02</div>
+            <div class="step-text">
+              <strong>VR Preview Session</strong>
+              <span>8K Pixel Stream tour via headset or browser</span>
+            </div>
+            <div class="step-status inprogress">IN PROGRESS</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">03</div>
+            <div class="step-text">
+              <strong>Confirm Booking</strong>
+              <span>Guest approves suite after immersive preview</span>
+            </div>
+            <div class="step-status pending">PENDING</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">04</div>
+            <div class="step-text">
+              <strong>Check-In Sync</strong>
+              <span>Booking confirmed and headset telemetry linked</span>
+            </div>
+            <div class="step-status pending">PENDING</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════ MODAL: VR STREAM LAUNCH ═══════════════════════════ -->
+  <div class="modal-backdrop" id="vrModal" aria-hidden="true">
+    <div class="modal glass-card" role="dialog" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <div class="modal-header">
+        <div class="modal-ue5-badge">
+          <span class="ue5-dot"></span> UE5 PIXEL STREAM · ACTIVE
+        </div>
+        <h2 class="modal-title" id="modalTitle">Launching VR Preview</h2>
+        <p class="modal-desc" id="modalDesc">Connecting to UE5 signaling server for Pan Pacific Sonargaon Grand Suite…
+        </p>
+      </div>
+      <div class="modal-stream-frame">
+        <div class="mock-stream" id="mockStream">
+          <div class="stream-loading" id="streamLoading">
+            <div class="loading-ring"></div>
+            <span>Initializing 8K Pixel Stream…</span>
+          </div>
+          <div class="stream-ready hidden" id="streamReady">
+            <img src="assets/pan_pacific_suite.png" alt="VR stream preview" class="stream-preview-img"
+              id="streamPreviewImg" />
+            <div class="stream-hud">
+              <span class="hud-tag">◉ LIVE STREAM · 8K · UE5.4</span>
+              <span class="hud-fps" id="hudFps">72 fps</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="action-btn secondary" id="modalEndStream">END STREAM</button>
+        <button class="action-btn primary" id="modalConfirmBooking">CONFIRM BOOKING →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ TOAST ═══════════════════════════ -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
