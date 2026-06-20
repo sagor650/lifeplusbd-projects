@@ -1,0 +1,11 @@
+name: lifeplusbd-home
+region: sfo
+static_sites:
+  - name: lifeplusbd-home
+    github:
+      repo: sagor650/lifeplusbd-projects
+      branch: main
+      deploy_on_push: true
+    source_dir: home
+    build_command: npm install && npm run build
+    output_dir: dist

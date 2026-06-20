@@ -69,6 +69,44 @@ The `home` project is the main local development application in this repository.
 - The `home` folder is the only project with a full Node-based build setup.
 - Use the folder names to identify corresponding deployed subdomains and brand experiences.
 
+## Deployment
+
+### Free deployment option: GitHub Pages
+
+This repository now includes a GitHub Actions workflow to deploy the `home` app to GitHub Pages.
+
+Files added:
+- `.github/workflows/deploy-gh-pages.yml`
+
+How it works:
+- Builds `home` on every push to `main`
+- Publishes the output from `home/dist` to the `gh-pages` branch
+- Uses the built-in `GITHUB_TOKEN`, so no extra secrets are required
+
+To enable GitHub Pages:
+1. Open your repo settings on GitHub.
+2. Go to `Pages`.
+3. Set the source to `gh-pages` branch.
+4. Save and wait for the site to publish.
+
+### Paid option: DigitalOcean App Platform
+
+This repo also includes a DigitalOcean App Platform spec if you still want App Platform later.
+
+Files added:
+- `.github/workflows/deploy.yml`
+- `app.yaml`
+
+Required GitHub secrets for DigitalOcean App Platform:
+- `DIGITALOCEAN_ACCESS_TOKEN`
+- `DO_APP_ID`
+
+Deployment behavior:
+- Builds `home` on every push to `main`
+- Uses `doctl` to update the App Platform app with the spec in `app.yaml`
+
+If the app is not yet created, create it from the DigitalOcean control panel or with `doctl apps create --spec app.yaml` and then set `DO_APP_ID`.
+
 ## Contact
 
 For updates or new project additions, add new folders at the repository root and document them in this README.

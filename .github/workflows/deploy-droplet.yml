@@ -1,0 +1,60 @@
+name: Deploy to Droplet
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Add Droplet to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 146.190.81.167 >> ~/.ssh/known_hosts
+
+      - name: Deploy to Droplet
+        run: |
+          ssh -v root@146.190.81.167 << 'EOF'
+          set -e
+          
+          echo "=== Starting deployment ==="
+          cd /var/www/lifeplusbd-projects
+          
+          echo "Pulling latest code..."
+          git fetch origin
+          git checkout main
+          git pull origin main
+          
+          echo "Installing dependencies..."
+          cd home
+          npm install
+          
+          echo "Building home app..."
+          npm run build
+          
+          echo "Restarting Node app..."
+          # If using systemd service
+          if systemctl list-units --all | grep -q lifeplusbd; then
+            sudo systemctl restart lifeplusbd
+            echo "Service restarted via systemd"
+          else
+            # Or if PM2
+            if command -v pm2 &> /dev/null; then
+              pm2 restart lifeplusbd || pm2 start --name lifeplusbd "npm run start"
+              echo "App restarted via PM2"
+            fi
+          fi
+          
+          echo "Deployment complete!"
+          EOF
