@@ -14,8 +14,6 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
-import { scrollToSection } from "../lib/scroll";
-
 const BLUE = "#0776BD";
 const GREEN = "#60BB46";
 
@@ -265,14 +263,14 @@ export function CareersSection() {
               We're a small, senior team shipping ambitious products from Dhaka.
               If you like owning hard problems end to end, we'd love to talk.
             </p>
-            <button
-              onClick={() => scrollToSection("contact")}
+            <a
+              href="/contact"
               className="inline-flex items-center gap-2 px-5 h-11 rounded-xl text-white text-sm transition-transform hover:scale-[1.02]"
               style={{ backgroundColor: BLUE, fontWeight: 600 }}
             >
               Get in touch
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </div>
           <ul className="grid gap-2.5">
             {roles.map((r) => (

@@ -33,4 +33,17 @@ export default defineConfig({
 
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv'],
+
+  // Multi-page app: every nav item is a real, separately-loaded page.
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        services: path.resolve(__dirname, 'services.html'),
+        about: path.resolve(__dirname, 'about.html'),
+        careers: path.resolve(__dirname, 'careers.html'),
+        contact: path.resolve(__dirname, 'contact.html'),
+      },
+    },
+  },
 })
