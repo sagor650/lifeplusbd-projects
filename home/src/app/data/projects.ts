@@ -150,49 +150,49 @@ export const projects: Project[] = [
 
   {
     id: "digital-twin",
-    name: "Digital Twin",
-    category: "VR · Simulation Platform",
-    tagline: "Virtual replication of real-world environments",
-    logoInitial: "DT",
+    name: "MedPAC",
+    category: "Healthcare · VNA / PACS",
+    tagline: "Vendor-neutral medical imaging archive & DICOM viewer",
+    logoInitial: "MP",
     logo: digitalTwinImg,
     logoColor: "#60BB46",
     accentColor: "#60BB46",
     cardBg: "linear-gradient(135deg, #EDFAED 0%, #DCFCE7 100%)",
     year: "2024",
     duration: "Ongoing",
-    role: "VR & Full-Stack Engineering",
+    role: "Medical Imaging & Full-Stack Engineering",
     overview:
-      "Digital Twin is a VR-based platform that creates high-fidelity virtual replicas of physical environments and products for simulation and analysis.",
+      "MedPAC is a vendor-neutral archive (VNA) and PACS platform with a browser-based DICOM/medical-imaging viewer and AI-assisted analysis for radiology workflows.",
     problem:
-      "Businesses lack immersive tools to test and validate real-world systems before deployment.",
+      "Hospitals run siloed, vendor-locked imaging systems that make studies hard to archive, share, and review across departments and devices.",
     process: [
       {
-        title: "3D Modeling Pipeline",
+        title: "Imaging Ingest & Archive",
         description:
-          "Developed system for converting real-world assets into digital simulations.",
+          "Built a vendor-neutral archive that normalizes and stores DICOM studies from any modality.",
       },
       {
-        title: "VR Interaction Design",
+        title: "Browser DICOM Viewer",
         description:
-          "Designed immersive interaction layers for virtual environments.",
+          "Developed a zero-install web viewer (Cornerstone) for radiology review on any device.",
       },
     ],
     features: [
       {
-        title: "Virtual Simulation",
-        description: "Real-time interaction with digital environments.",
+        title: "Web DICOM Viewer",
+        description: "View CT/MR/CR studies in the browser — no desktop client.",
       },
       {
-        title: "3D Asset Replication",
-        description: "High-fidelity digital models of physical systems.",
+        title: "AI-Assisted Analysis",
+        description: "Automated imaging analysis and structured report drafting.",
       },
     ],
     metrics: [],
-    tags: ["VR", "Simulation", "Digital Twin"],
+    tags: ["VNA", "PACS", "DICOM"],
     mockupBg: "#EDFAED",
-    mockupPattern: "vr",
-    pdfUrl: "/pdf/file-sample_150kB.pdf",
-    siteUrl: "",
+    mockupPattern: "health",
+    pdfUrl: "/pdf/medpac-VNA-PACS.pdf",
+    siteUrl: "https://medpac.lifeplusbd.tech/",
   },
 
   {
