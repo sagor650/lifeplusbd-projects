@@ -2,6 +2,7 @@ import assetVaultImg from "../../imports/asset-vault.png";
 import digitalRmImg from "../../imports/digital-rm.png";
 import digitalTwinImg from "../../imports/digital-twin.png";
 import medpacImg from "../../imports/medpac.png";
+import udbLogo from "../../imports/udb_logo.svg";
 import lifeplusHubImg from "../../imports/lifeplus-hub.png";
 import optiPanelImg from "../../imports/opti-panel.png";
 import pmsImg from "../../imports/pms.png";
@@ -198,9 +199,9 @@ export const projects: Project[] = [
 
   {
     id: "digital-rm",
-    name: "Digital RM (LUNA)",
-    category: "AI · Automation Platform",
-    tagline: "AI digital employee for enterprise automation",
+    name: "DigitalRM",
+    category: "AI · Digital Employee",
+    tagline: "Agentic AI digital employee (Aria)",
     logoInitial: "RM",
     logo: digitalRmImg,
     logoColor: "#F59E0B",
@@ -210,35 +211,36 @@ export const projects: Project[] = [
     duration: "Ongoing",
     role: "AI Product Engineering",
     overview:
-      "Digital RM (LUNA) is an AI-powered digital employee designed to automate call center and enterprise workflows.",
+      "DigitalRM is an AI digital employee — Aria — that runs enterprise relationship-management workflows with explicit agentic reasoning (plan → act → observe → reflect) over a typed datastore, reachable through webchat and WhatsApp.",
     problem:
-      "Organizations face high operational costs and inefficiencies in manual customer support systems.",
+      "Organizations carry high operational costs and slow turnaround in manual relationship-management and support workflows.",
     process: [
       {
-        title: "AI Workflow Design",
+        title: "Agentic Engine",
         description:
-          "Designed conversational AI workflows for customer interaction automation.",
+          "Built a plan → act → observe → reflect reasoning runtime over tiered models.",
       },
       {
-        title: "Voice & Chat Integration",
-        description: "Integrated AI with multi-channel communication systems.",
+        title: "Typed Memory & Audit",
+        description:
+          "Grounded the agent on a typed gRPC datastore for durable memory, auth, and an audit trail.",
       },
     ],
     features: [
       {
-        title: "AI Call Automation",
-        description: "Automated handling of customer calls and queries.",
+        title: "Multi-Channel",
+        description: "One agent reachable via webchat and WhatsApp.",
       },
       {
-        title: "Workflow Automation",
-        description: "Automates repetitive enterprise tasks.",
+        title: "Proactive Reminders",
+        description: "Schedules tasks and follows up without being asked.",
       },
     ],
     metrics: [],
-    tags: ["AI", "Automation", "Call Center"],
+    tags: ["AI", "Agent", "Automation"],
     mockupBg: "#FFF8ED",
     mockupPattern: "ai",
-    pdfUrl: "/pdf/file-sample_150kB.pdf",
+    pdfUrl: "/pdf/digitalrm-employee-brief.pdf",
     siteUrl: "",
   },
 
@@ -426,5 +428,52 @@ export const projects: Project[] = [
     mockupPattern: "travel",
     pdfUrl: "/pdf/file-sample_150kB.pdf",
     siteUrl: "https://tourism.lifeplusbd.tech/",
+  },
+
+  {
+    id: "udb",
+    name: "udb",
+    category: "Infrastructure · Data Broker",
+    tagline: "One typed gRPC API over many databases",
+    logoInitial: "UDB",
+    logo: udbLogo,
+    logoColor: "#0EA5E9",
+    accentColor: "#0EA5E9",
+    cardBg: "linear-gradient(135deg, #EEF7FF 0%, #E0F2FE 100%)",
+    year: "2024",
+    duration: "Ongoing",
+    role: "Platform & Systems Engineering",
+    overview:
+      "UDB (Universal Data Broker) is a proto-driven broker that exposes one typed gRPC API over 18+ databases — define entities in protobuf and get auth, audit, CDC, migrations and multi-backend SQL compilation. The live demo runs the real parser, catalog and IR compiler in your browser via WebAssembly.",
+    problem:
+      "Teams glue many databases together with bespoke, untyped code — no unified auth, audit, schema control or portability across backends.",
+    process: [
+      {
+        title: "Proto-Driven Catalog",
+        description:
+          "Define entities once in protobuf; UDB derives schema, migrations and a typed API across every backend.",
+      },
+      {
+        title: "Portable Engine (WASM)",
+        description:
+          "The parser, AST/IR compiler and checksum engine compile to WebAssembly to run anywhere — even the browser.",
+      },
+    ],
+    features: [
+      {
+        title: "One Typed API",
+        description: "gRPC over 18+ SQL, NoSQL, vector and object backends.",
+      },
+      {
+        title: "In-Browser Playground",
+        description: "Real IR-compiled SQL and manifest generation via WASM.",
+      },
+    ],
+    metrics: [],
+    tags: ["gRPC", "Protobuf", "Databases"],
+    mockupBg: "#EEF7FF",
+    mockupPattern: "logistics",
+    pdfUrl: "/pdf/udb-protocol-plus-product-overview.pdf",
+    siteUrl: "https://udb.lifeplusbd.tech/",
   },
 ];
