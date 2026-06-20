@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import {
-  X,
+  AlertCircle,
   Download,
   ExternalLink,
   FileText,
   Globe,
-  AlertCircle,
+  X,
 } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 import type { Project } from "../data/projects";
 
 interface PDFViewerProps {
@@ -44,27 +44,22 @@ export function PDFViewer({ project, onClose }: PDFViewerProps) {
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
-  // Neither siteUrl nor pdfUrl → nothing to show
-  if (!project || (!project.siteUrl && !project.pdfUrl)) return null;
+  // Neither siteUrl (non-empty) nor pdfUrl → nothing to show
+  const hasSite = Boolean(project?.siteUrl && project.siteUrl.trim() !== "");
+  const hasPdf = Boolean(project?.pdfUrl && project.pdfUrl.trim() !== "");
 
-  const isSite = Boolean(project.siteUrl);
+  if (!project || (!hasSite && !hasPdf)) return null;
+
+  // Prefer siteUrl when available; fall back to pdfUrl
+  const isSite = hasSite;
   const previewUrl = isSite ? project.siteUrl! : project.pdfUrl!;
   const label = isSite ? project.name : `${project.name} — Case Study.pdf`;
 
-  // Detect iframe block via load event — if the iframe loads but is empty
-  // (X-Frame-Options), we show a fallback after a short timeout
-  function handleIframeLoad(e: React.SyntheticEvent<HTMLIFrameElement>) {
-    try {
-      // If X-Frame-Options blocked it, contentDocument will be null or empty
-      const doc = (e.target as HTMLIFrameElement).contentDocument;
-      if (!doc || doc.body?.innerHTML === "") {
-        setIframeBlocked(true);
-      }
-    } catch {
-      // cross-origin access throws — means it loaded (good) or was blocked
-      // We can't distinguish reliably, so leave iframeBlocked as false
-    }
-  }
+  // For site iframes we cannot reliably detect X-Frame-Options via JS —
+  // cross-origin contentDocument access always throws, making it impossible
+  // to distinguish a successful load from a blocked one.
+  // estate.lifeplusbd.tech sends no X-Frame-Options / CSP headers, so the
+  // iframe renders fine. iframeBlocked stays false and we render the iframe directly.
 
   return (
     <AnimatePresence>
@@ -93,7 +88,7 @@ export function PDFViewer({ project, onClose }: PDFViewerProps) {
             <div
               className="relative w-full flex flex-col rounded-2xl overflow-hidden pointer-events-auto"
               style={{
-                maxWidth: "960px",
+                maxWidth: "1400px",
                 height: "88vh",
                 boxShadow:
                   "0 32px 80px rgba(0,0,0,0.35), 0 4px 24px rgba(0,0,0,0.15)",
@@ -201,12 +196,6 @@ export function PDFViewer({ project, onClose }: PDFViewerProps) {
                     src={previewUrl}
                     title={label}
                     className="w-full h-full border-none"
-                    onLoad={isSite ? handleIframeLoad : undefined}
-                    sandbox={
-                      isSite
-                        ? "allow-scripts allow-same-origin allow-forms allow-popups"
-                        : undefined
-                    }
                   />
                 )}
               </div>
