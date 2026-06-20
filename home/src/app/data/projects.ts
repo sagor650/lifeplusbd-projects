@@ -144,8 +144,8 @@ export const projects: Project[] = [
     tags: ["SCADA", "Industrial", "Automation"],
     mockupBg: "#F5F0FF",
     mockupPattern: "industrial",
-    pdfUrl: "/pdf/file-sample_150kB.pdf",
-    siteUrl: "",
+    pdfUrl: "/pdf/optipanel-scada-feature-brief.pdf",
+    siteUrl: "https://opti.lifeplusbd.tech/",
   },
 
   {

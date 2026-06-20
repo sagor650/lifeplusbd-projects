@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowUpRight, Plus, Search } from "lucide-react";
+import { ArrowUpRight, FileText, Plus, Search } from "lucide-react";
 import { projects, type Project } from "../data/projects";
 
 interface GridViewProps {
@@ -166,6 +166,35 @@ function GridCard({
           whileHover={{ scaleX: 1 }}
           transition={{ duration: 0.2 }}
         />
+
+        {/* PDF button — opens the brief directly without triggering the card's site/demo view */}
+        {project.pdfUrl && project.pdfUrl.trim() !== "" && (
+          <span
+            role="button"
+            tabIndex={0}
+            title="Open PDF brief"
+            aria-label={`Open ${project.name} PDF brief`}
+            onClick={(e) => {
+              e.stopPropagation();
+              window.open(project.pdfUrl, "_blank", "noopener,noreferrer");
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(project.pdfUrl, "_blank", "noopener,noreferrer");
+              }
+            }}
+            className="absolute bottom-3 right-3 z-20 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/90 dark:bg-white/90 backdrop-blur-sm shadow-sm hover:bg-white transition-colors cursor-pointer"
+            style={{ fontWeight: 600 }}
+          >
+            <FileText
+              className="w-3.5 h-3.5"
+              style={{ color: project.logoColor }}
+            />
+            <span className="text-xs text-gray-700">PDF</span>
+          </span>
+        )}
       </div>
 
       {/* Body */}
