@@ -375,7 +375,7 @@ export const projects: Project[] = [
     mockupBg: "#EFF6FF",
     mockupPattern: "media",
     pdfUrl: "/pdf/Lifeplus_Broadcast_System_Doc.pdf",
-    siteUrl: "",
+    siteUrl: "https://broadcast.lifeplusbd.tech/cancer-hospital",
   },
   {
     id: "virtustate",
