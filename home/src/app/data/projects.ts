@@ -241,7 +241,7 @@ export const projects: Project[] = [
     mockupBg: "#FFF8ED",
     mockupPattern: "ai",
     pdfUrl: "/pdf/digitalrm-employee-brief.pdf",
-    siteUrl: "",
+    siteUrl: "https://digitalrm.lifeplusbd.tech/",
   },
 
   {
