@@ -9,6 +9,7 @@ import {
   Heart,
   Mail,
   MapPin,
+  Phone,
   Rocket,
   ShieldCheck,
   Sparkles,
@@ -307,7 +308,7 @@ export function ContactSection() {
             />
             <div className="flex flex-wrap gap-3">
               <a
-                href="mailto:info@labaidinsuretech.com"
+                href="mailto:info@lifeplusbd.tech"
                 className="inline-flex items-center gap-2 px-5 h-11 rounded-xl text-white text-sm transition-transform hover:scale-[1.02]"
                 style={{ backgroundColor: BLUE, fontWeight: 600 }}
               >
@@ -316,22 +317,29 @@ export function ContactSection() {
               </a>
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-3 gap-4">
             <div className="rounded-2xl bg-white dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.07] p-6">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: BLUE + "12" }}>
                 <Mail className="w-5 h-5" style={{ color: BLUE }} />
               </div>
               <p className="text-xs text-gray-400 dark:text-gray-500 mb-1" style={{ fontWeight: 600 }}>EMAIL</p>
-              <a href="mailto:info@labaidinsuretech.com" className="text-sm text-gray-800 dark:text-gray-200 hover:underline break-all">
-                info@labaidinsuretech.com
+              <a href="mailto:info@lifeplusbd.tech" className="text-sm text-gray-800 dark:text-gray-200 hover:underline break-all">
+                info@lifeplusbd.tech
               </a>
+            </div>
+            <div className="rounded-2xl bg-white dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.07] p-6">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: BLUE + "12" }}>
+                <Phone className="w-5 h-5" style={{ color: BLUE }} />
+              </div>
+              <p className="text-xs text-gray-400 dark:text-gray-500 mb-1" style={{ fontWeight: 600 }}>HOTLINE</p>
+              <a href="tel:16946" className="text-sm text-gray-800 dark:text-gray-200 hover:underline">16946</a>
             </div>
             <div className="rounded-2xl bg-white dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.07] p-6">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: GREEN + "18" }}>
                 <MapPin className="w-5 h-5" style={{ color: GREEN }} />
               </div>
               <p className="text-xs text-gray-400 dark:text-gray-500 mb-1" style={{ fontWeight: 600 }}>LOCATION</p>
-              <p className="text-sm text-gray-800 dark:text-gray-200">Dhaka, Bangladesh</p>
+              <p className="text-sm text-gray-800 dark:text-gray-200">66, Mirpur Road, Kalabagan 2nd Lane, Dhaka 1205</p>
             </div>
           </div>
         </div>
