@@ -1,5 +1,5 @@
-import { motion } from "motion/react";
 import { ArrowUpRight, FileText } from "lucide-react";
+import { motion } from "motion/react";
 import { useState } from "react";
 import type { Project } from "../data/projects";
 
@@ -82,7 +82,10 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
             className="absolute bottom-3 right-3 z-20 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/85 backdrop-blur-sm shadow-sm hover:bg-white transition-colors"
             style={{ fontWeight: 600 }}
           >
-            <FileText className="w-3.5 h-3.5" style={{ color: project.logoColor }} />
+            <FileText
+              className="w-3.5 h-3.5"
+              style={{ color: project.logoColor }}
+            />
             <span className="text-xs text-gray-700">PDF</span>
           </button>
         )}
