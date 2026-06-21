@@ -36,65 +36,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "asset-vault",
-    name: "Asset Vault",
-    category: "Enterprise · Data Security",
-    tagline: "Secure digital asset storage for enterprise organizations",
-    logoInitial: "AV",
-    logo: assetVaultImg,
-    logoColor: "#0776BD",
-    accentColor: "#0776BD",
-    cardBg: "linear-gradient(135deg, #EEF4FF 0%, #DBEAFE 100%)",
-    year: "2024",
-    duration: "Ongoing",
-    role: "Product & Engineering",
-    overview:
-      "Asset Vault is a secure digital asset storage solution designed for industrial and corporate organizations to manage, organize, and retrieve valuable digital resources in a centralized system.",
-    problem:
-      "Enterprises struggle with fragmented storage systems, making it difficult to securely manage and retrieve critical digital assets across teams and departments.",
-    process: [
-      {
-        title: "Requirement Analysis",
-        description:
-          "Worked with enterprise clients to understand secure storage needs and compliance requirements for sensitive digital assets.",
-      },
-      {
-        title: "System Architecture",
-        description:
-          "Designed a scalable and secure architecture for centralized asset management with role-based access control.",
-      },
-      {
-        title: "Security Implementation",
-        description:
-          "Implemented encryption, access policies, and audit logging to ensure enterprise-grade data protection.",
-      },
-    ],
-    features: [
-      {
-        title: "Centralized Asset Storage",
-        description:
-          "Single platform to store, manage, and retrieve all digital assets securely.",
-      },
-      {
-        title: "Role-Based Access Control",
-        description:
-          "Granular permissions for teams, departments, and external stakeholders.",
-      },
-      {
-        title: "Secure Audit Logs",
-        description:
-          "Track every asset interaction for compliance and security monitoring.",
-      },
-    ],
-    metrics: [],
-    tags: ["Enterprise", "Security", "Data Management"],
-    mockupBg: "#EEF4FF",
-    mockupPattern: "data",
-    pdfUrl: "/pdf/Lifeplus_Asset_Management_Doc.pdf",
-    siteUrl: "",
-  },
-
-  {
     id: "opti-panel",
     name: "Opti Panel",
     category: "Industrial · SCADA System",
@@ -245,6 +186,53 @@ export const projects: Project[] = [
   },
 
   {
+    id: "udb",
+    name: "udb",
+    category: "Infrastructure · Data Broker",
+    tagline: "One typed gRPC API over many databases",
+    logoInitial: "UDB",
+    logo: udbLogo,
+    logoColor: "#0EA5E9",
+    accentColor: "#0EA5E9",
+    cardBg: "linear-gradient(135deg, #EEF7FF 0%, #E0F2FE 100%)",
+    year: "2024",
+    duration: "Ongoing",
+    role: "Platform & Systems Engineering",
+    overview:
+      "UDB (Universal Data Broker) is a proto-driven broker that exposes one typed gRPC API over 18+ databases — define entities in protobuf and get auth, audit, CDC, migrations and multi-backend SQL compilation. The live demo runs the real parser, catalog and IR compiler in your browser via WebAssembly.",
+    problem:
+      "Teams glue many databases together with bespoke, untyped code — no unified auth, audit, schema control or portability across backends.",
+    process: [
+      {
+        title: "Proto-Driven Catalog",
+        description:
+          "Define entities once in protobuf; UDB derives schema, migrations and a typed API across every backend.",
+      },
+      {
+        title: "Portable Engine (WASM)",
+        description:
+          "The parser, AST/IR compiler and checksum engine compile to WebAssembly to run anywhere — even the browser.",
+      },
+    ],
+    features: [
+      {
+        title: "One Typed API",
+        description: "gRPC over 18+ SQL, NoSQL, vector and object backends.",
+      },
+      {
+        title: "In-Browser Playground",
+        description: "Real IR-compiled SQL and manifest generation via WASM.",
+      },
+    ],
+    metrics: [],
+    tags: ["gRPC", "Protobuf", "Databases"],
+    mockupBg: "#EEF7FF",
+    mockupPattern: "logistics",
+    pdfUrl: "/pdf/udb-protocol-plus-product-overview.pdf",
+    siteUrl: "https://udb.lifeplusbd.tech/",
+  },
+
+  {
     id: "pms",
     name: "PMS",
     category: "Healthcare · Pharmacy System",
@@ -287,6 +275,65 @@ export const projects: Project[] = [
     mockupBg: "#ECFDF5",
     mockupPattern: "health",
     pdfUrl: "/pdf/Lifeplus_Model_Pharma_Doc_White.pdf",
+    siteUrl: "",
+  },
+
+  {
+    id: "asset-vault",
+    name: "Asset Vault",
+    category: "Enterprise · Data Security",
+    tagline: "Secure digital asset storage for enterprise organizations",
+    logoInitial: "AV",
+    logo: assetVaultImg,
+    logoColor: "#0776BD",
+    accentColor: "#0776BD",
+    cardBg: "linear-gradient(135deg, #EEF4FF 0%, #DBEAFE 100%)",
+    year: "2024",
+    duration: "Ongoing",
+    role: "Product & Engineering",
+    overview:
+      "Asset Vault is a secure digital asset storage solution designed for industrial and corporate organizations to manage, organize, and retrieve valuable digital resources in a centralized system.",
+    problem:
+      "Enterprises struggle with fragmented storage systems, making it difficult to securely manage and retrieve critical digital assets across teams and departments.",
+    process: [
+      {
+        title: "Requirement Analysis",
+        description:
+          "Worked with enterprise clients to understand secure storage needs and compliance requirements for sensitive digital assets.",
+      },
+      {
+        title: "System Architecture",
+        description:
+          "Designed a scalable and secure architecture for centralized asset management with role-based access control.",
+      },
+      {
+        title: "Security Implementation",
+        description:
+          "Implemented encryption, access policies, and audit logging to ensure enterprise-grade data protection.",
+      },
+    ],
+    features: [
+      {
+        title: "Centralized Asset Storage",
+        description:
+          "Single platform to store, manage, and retrieve all digital assets securely.",
+      },
+      {
+        title: "Role-Based Access Control",
+        description:
+          "Granular permissions for teams, departments, and external stakeholders.",
+      },
+      {
+        title: "Secure Audit Logs",
+        description:
+          "Track every asset interaction for compliance and security monitoring.",
+      },
+    ],
+    metrics: [],
+    tags: ["Enterprise", "Security", "Data Management"],
+    mockupBg: "#EEF4FF",
+    mockupPattern: "data",
+    pdfUrl: "/pdf/Lifeplus_Asset_Management_Doc.pdf",
     siteUrl: "",
   },
 
@@ -428,52 +475,5 @@ export const projects: Project[] = [
     mockupPattern: "travel",
     pdfUrl: "/pdf/file-sample_150kB.pdf",
     siteUrl: "https://tourism.lifeplusbd.tech/",
-  },
-
-  {
-    id: "udb",
-    name: "udb",
-    category: "Infrastructure · Data Broker",
-    tagline: "One typed gRPC API over many databases",
-    logoInitial: "UDB",
-    logo: udbLogo,
-    logoColor: "#0EA5E9",
-    accentColor: "#0EA5E9",
-    cardBg: "linear-gradient(135deg, #EEF7FF 0%, #E0F2FE 100%)",
-    year: "2024",
-    duration: "Ongoing",
-    role: "Platform & Systems Engineering",
-    overview:
-      "UDB (Universal Data Broker) is a proto-driven broker that exposes one typed gRPC API over 18+ databases — define entities in protobuf and get auth, audit, CDC, migrations and multi-backend SQL compilation. The live demo runs the real parser, catalog and IR compiler in your browser via WebAssembly.",
-    problem:
-      "Teams glue many databases together with bespoke, untyped code — no unified auth, audit, schema control or portability across backends.",
-    process: [
-      {
-        title: "Proto-Driven Catalog",
-        description:
-          "Define entities once in protobuf; UDB derives schema, migrations and a typed API across every backend.",
-      },
-      {
-        title: "Portable Engine (WASM)",
-        description:
-          "The parser, AST/IR compiler and checksum engine compile to WebAssembly to run anywhere — even the browser.",
-      },
-    ],
-    features: [
-      {
-        title: "One Typed API",
-        description: "gRPC over 18+ SQL, NoSQL, vector and object backends.",
-      },
-      {
-        title: "In-Browser Playground",
-        description: "Real IR-compiled SQL and manifest generation via WASM.",
-      },
-    ],
-    metrics: [],
-    tags: ["gRPC", "Protobuf", "Databases"],
-    mockupBg: "#EEF7FF",
-    mockupPattern: "logistics",
-    pdfUrl: "/pdf/udb-protocol-plus-product-overview.pdf",
-    siteUrl: "https://udb.lifeplusbd.tech/",
   },
 ];
