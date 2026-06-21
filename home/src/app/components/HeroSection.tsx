@@ -56,7 +56,7 @@ export function HeroSection() {
         <img
           src={logo}
           alt="LifePlus Tech"
-          className="h-5 w-auto flex-shrink-0"
+          className="h-6 w-auto flex-shrink-0"
         />
         <span
           className="text-xs text-blue-700 dark:text-blue-400"

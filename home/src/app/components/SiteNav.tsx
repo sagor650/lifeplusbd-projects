@@ -23,7 +23,7 @@ export function SiteNav({
       <div className="h-full max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-7 relative">
         {/* Brand → home */}
         <a href="/" className="flex items-center gap-3 flex-shrink-0">
-          <img src={logo} alt="LifePlus Tech" className="h-8 w-auto" />
+          <img src={logo} alt="LifePlus Tech" className="h-10 w-auto" />
           <span
             className="text-gray-900 dark:text-white hidden sm:block"
             style={{ fontWeight: 700, fontSize: "0.9375rem", letterSpacing: "-0.01em" }}
