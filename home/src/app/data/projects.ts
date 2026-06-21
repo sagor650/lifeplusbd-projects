@@ -90,7 +90,7 @@ export const projects: Project[] = [
     mockupBg: "#EEF4FF",
     mockupPattern: "data",
     pdfUrl: "/pdf/Lifeplus_Asset_Management_Doc.pdf",
-    siteUrl: "https://asset.lifeplusbd.tech/login",
+    siteUrl: "https://asset.lifeplusbd.tech/",
   },
   {
     id: "opti-panel",

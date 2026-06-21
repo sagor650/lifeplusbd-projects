@@ -1,6 +1,6 @@
+import { ArrowUpRight, ExternalLink, FileText, Search } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { ArrowUpRight, FileText, Search, ExternalLink } from "lucide-react";
 import { projects, type Project } from "../data/projects";
 
 interface GridViewProps {
@@ -20,7 +20,9 @@ export function GridView({ onCardClick }: GridViewProps) {
     );
   });
 
-  const liveCount = projects.filter((p) => p.siteUrl && p.siteUrl.trim()).length;
+  const liveCount = projects.filter(
+    (p) => p.siteUrl && p.siteUrl.trim(),
+  ).length;
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-28">
@@ -158,7 +160,7 @@ function GridCard({
           onClick();
         }
       }}
-      className="group relative text-left bg-white dark:bg-white/[0.03] rounded-2xl border border-gray-100 dark:border-white/[0.07] overflow-hidden w-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0776BD]/40 focus-visible:ring-offset-2"
+      className="group relative text-left bg-white dark:bg-white/[0.03] rounded-2xl border border-gray-100 dark:border-white/[0.07] overflow-hidden w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0776BD]/40 focus-visible:ring-offset-2"
       style={{
         boxShadow: "0 1px 4px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.03)",
       }}
@@ -212,7 +214,10 @@ function GridCard({
 
         {/* Top-left: year (uniform across all cards) */}
         <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/70 dark:bg-black/30 backdrop-blur-sm">
-          <span className="text-[10px] text-gray-600 dark:text-gray-300" style={{ fontWeight: 600 }}>
+          <span
+            className="text-[10px] text-gray-600 dark:text-gray-300"
+            style={{ fontWeight: 600 }}
+          >
             {project.year}
           </span>
         </div>
@@ -237,7 +242,7 @@ function GridCard({
                 e.stopPropagation();
                 window.open(project.siteUrl, "_blank", "noopener,noreferrer");
               }}
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-white shadow-sm transition-transform hover:scale-105"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-white shadow-sm transition-transform hover:scale-105 cursor-pointer"
               style={{ backgroundColor: accent, fontWeight: 600 }}
             >
               <ExternalLink className="w-3 h-3" />
@@ -253,7 +258,7 @@ function GridCard({
                 e.stopPropagation();
                 window.open(project.pdfUrl, "_blank", "noopener,noreferrer");
               }}
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/90 dark:bg-white/90 backdrop-blur-sm shadow-sm hover:bg-white transition-colors"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/90 dark:bg-white/90 backdrop-blur-sm shadow-sm hover:bg-white transition-colors cursor-pointer"
               style={{ fontWeight: 600 }}
             >
               <FileText className="w-3.5 h-3.5" style={{ color: accent }} />
@@ -265,7 +270,11 @@ function GridCard({
         {/* Bottom accent sweep on hover */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-1"
-          style={{ background: `linear-gradient(90deg, ${accent}, ${accent}00)`, scaleX: 0, originX: 0 }}
+          style={{
+            background: `linear-gradient(90deg, ${accent}, ${accent}00)`,
+            scaleX: 0,
+            originX: 0,
+          }}
           whileHover={{ scaleX: 1 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
         />
@@ -304,7 +313,7 @@ function GridCard({
             ))}
           </div>
           <span
-            className="hidden sm:inline-flex items-center gap-0.5 text-[11px] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all flex-shrink-0"
+            className="hidden sm:inline-flex items-center gap-0.5 text-[11px] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all flex-shrink-0 cursor-pointer"
             style={{ color: accent, fontWeight: 600 }}
           >
             View <ArrowUpRight className="w-3 h-3" />
