@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, FileText } from "lucide-react";
 import { useState } from "react";
 import type { Project } from "../data/projects";
 
@@ -68,6 +68,24 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
             {project.year}
           </span>
         </div>
+
+        {/* PDF button — opens the brief directly without triggering the card's site/demo view */}
+        {project.pdfUrl && project.pdfUrl.trim() !== "" && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              window.open(project.pdfUrl, "_blank", "noopener,noreferrer");
+            }}
+            title="Open PDF brief"
+            aria-label={`Open ${project.name} PDF brief`}
+            className="absolute bottom-3 right-3 z-20 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/85 backdrop-blur-sm shadow-sm hover:bg-white transition-colors"
+            style={{ fontWeight: 600 }}
+          >
+            <FileText className="w-3.5 h-3.5" style={{ color: project.logoColor }} />
+            <span className="text-xs text-gray-700">PDF</span>
+          </button>
+        )}
       </div>
 
       {/* Card content */}

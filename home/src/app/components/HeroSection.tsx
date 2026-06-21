@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
-import { ArrowRight, Building2, Layers, Star, Users } from "lucide-react";
+import { ArrowRight, Building2, Layers, Users } from "lucide-react";
 import logo from "../../imports/Lifeplus_tech.png";
+import { scrollToSection } from "../lib/scroll";
 
 const stats = [
   { icon: Building2, value: "140+", label: "Enterprise clients" },
@@ -8,19 +9,42 @@ const stats = [
   { icon: Users, value: "45", label: "Team members" },
 ];
 
-const clients = ["Stripe", "Moderna", "Shopify", "Palantir", "Notion", "Figma"];
-
 export function HeroSection() {
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-14 pb-20 relative overflow-hidden">
-      {/* Ambient gradient */}
-      <div
-        className="absolute top-0 right-0 w-3/4 h-96 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at 85% 0%, rgba(7,118,189,0.08) 0%, rgba(96,187,70,0.05) 45%, transparent 72%)",
-        }}
-      />
+      {/* Ambient background — subtle grid + slow-drifting gradient orbs */}
+      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-40 dark:opacity-[0.12]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(7,118,189,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(7,118,189,0.07) 1px, transparent 1px)",
+            backgroundSize: "44px 44px",
+            maskImage:
+              "radial-gradient(ellipse 70% 60% at 72% 0%, black, transparent 78%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 70% 60% at 72% 0%, black, transparent 78%)",
+          }}
+        />
+        <motion.div
+          className="absolute -top-24 right-0 w-[460px] h-[460px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(7,118,189,0.16), transparent 65%)",
+          }}
+          animate={{ y: [0, 26, 0], x: [0, -18, 0] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute top-24 -left-20 w-[380px] h-[380px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(96,187,70,0.13), transparent 65%)",
+          }}
+          animate={{ y: [0, -22, 0], x: [0, 20, 0] }}
+          transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
 
       {/* Company badge */}
       <motion.div
@@ -32,7 +56,7 @@ export function HeroSection() {
         <img
           src={logo}
           alt="LifePlus Tech"
-          className="h-5 w-auto flex-shrink-0"
+          className="h-6 w-auto flex-shrink-0"
         />
         <span
           className="text-xs text-blue-700 dark:text-blue-400"
@@ -50,8 +74,8 @@ export function HeroSection() {
         className="text-gray-900 dark:text-white mb-6 max-w-[780px]"
         style={{
           fontWeight: 800,
-          fontSize: "clamp(2.2rem, 6vw, 2rem)",
-          lineHeight: 1.03,
+          fontSize: "clamp(2.5rem, 6.5vw, 4.25rem)",
+          lineHeight: 1.04,
           letterSpacing: "-0.038em",
         }}
       >
@@ -95,6 +119,7 @@ export function HeroSection() {
             boxShadow: "0 8px 24px rgba(7,118,189,0.25)",
           }}
           whileTap={{ scale: 0.97 }}
+          onClick={() => scrollToSection("products")}
           className="flex items-center gap-2 px-5 h-11 rounded-xl text-white text-sm transition-shadow"
           style={{ backgroundColor: "#0776BD", fontWeight: 600 }}
         >
@@ -104,6 +129,7 @@ export function HeroSection() {
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.97 }}
+          onClick={() => { window.location.href = "/contact"; }}
           className="flex items-center gap-2 px-5 h-11 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
           style={{ fontWeight: 500 }}
         >
