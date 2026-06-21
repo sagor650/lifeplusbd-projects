@@ -45,7 +45,7 @@ export const projects: Project[] = [
     logoColor: "#8B5CF6",
     accentColor: "#8B5CF6",
     cardBg: "linear-gradient(135deg, #F5F0FF 0%, #EDE9FE 100%)",
-    year: "2024",
+    year: "2026",
     duration: "Ongoing",
     role: "Industrial Software Engineering",
     overview:
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     logoColor: "#D11F3C",
     accentColor: "#D11F3C",
     cardBg: "linear-gradient(135deg, #FFF1F3 0%, #FFE4E8 100%)",
-    year: "2024",
+    year: "2026",
     duration: "Ongoing",
     role: "Medical Imaging & Full-Stack Engineering",
     overview:
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     logoColor: "#F59E0B",
     accentColor: "#F59E0B",
     cardBg: "linear-gradient(135deg, #FFF8ED 0%, #FEF3C7 100%)",
-    year: "2024",
+    year: "2026",
     duration: "Ongoing",
     role: "AI Product Engineering",
     overview:
@@ -195,7 +195,7 @@ export const projects: Project[] = [
     logoColor: "#0EA5E9",
     accentColor: "#0EA5E9",
     cardBg: "linear-gradient(135deg, #EEF7FF 0%, #E0F2FE 100%)",
-    year: "2024",
+    year: "2026",
     duration: "Ongoing",
     role: "Platform & Systems Engineering",
     overview:
@@ -242,7 +242,7 @@ export const projects: Project[] = [
     logoColor: "#10B981",
     accentColor: "#10B981",
     cardBg: "linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%)",
-    year: "2023",
+    year: "2026",
     duration: "Ongoing",
     role: "Backend & Product Engineering",
     overview:
@@ -288,7 +288,7 @@ export const projects: Project[] = [
     logoColor: "#0776BD",
     accentColor: "#0776BD",
     cardBg: "linear-gradient(135deg, #EEF4FF 0%, #DBEAFE 100%)",
-    year: "2024",
+    year: "2026",
     duration: "Ongoing",
     role: "Product & Engineering",
     overview:
@@ -347,7 +347,7 @@ export const projects: Project[] = [
     logoColor: "#3B82F6",
     accentColor: "#3B82F6",
     cardBg: "linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)",
-    year: "2024",
+    year: "2026",
     duration: "Ongoing",
     role: "Full-Stack Engineering",
     overview:
@@ -393,7 +393,7 @@ export const projects: Project[] = [
     logoColor: "#EC4899",
     accentColor: "#EC4899",
     cardBg: "linear-gradient(135deg, #FFF0F7 0%, #FCE7F3 100%)",
-    year: "2023",
+    year: "2026",
     duration: "Ongoing",
     role: "Product & Engineering",
     overview:
@@ -440,7 +440,7 @@ export const projects: Project[] = [
     logoColor: "#14B8A6",
     accentColor: "#14B8A6",
     cardBg: "linear-gradient(135deg, #EDFAFA 0%, #CCFBF1 100%)",
-    year: "2023",
+    year: "2026",
     duration: "Ongoing",
     role: "Product & Engineering",
     overview:
