@@ -1,6 +1,6 @@
-import { motion } from "motion/react";
 import { ArrowRight, Building2, Layers, Users } from "lucide-react";
-import logo from "../../imports/Lifeplus_tech.png";
+import { motion } from "motion/react";
+import logo from "../../imports/logo.svg";
 import { scrollToSection } from "../lib/scroll";
 
 const stats = [
@@ -88,7 +88,7 @@ export function HeroSection() {
             backgroundClip: "text",
           }}
         >
-          software
+          Software
         </span>{" "}
         that defines categories.
       </motion.h1>
@@ -129,7 +129,9 @@ export function HeroSection() {
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.97 }}
-          onClick={() => { window.location.href = "/contact"; }}
+          onClick={() => {
+            window.location.href = "/contact";
+          }}
           className="flex items-center gap-2 px-5 h-11 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
           style={{ fontWeight: 500 }}
         >
