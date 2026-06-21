@@ -1,5 +1,5 @@
 import { Mail, Moon, Sun } from "lucide-react";
-import logo from "../../imports/Lifeplus_tech.png";
+import logo from "../../imports/logo.svg";
 
 const NAV = [
   { label: "Products", href: "/" },
@@ -24,12 +24,12 @@ export function SiteNav({
         {/* Brand → home */}
         <a href="/" className="flex items-center gap-3 flex-shrink-0">
           <img src={logo} alt="LifePlus Tech" className="h-10 w-auto" />
-          <span
+          {/* <span
             className="text-gray-900 dark:text-white hidden sm:block"
             style={{ fontWeight: 700, fontSize: "0.9375rem", letterSpacing: "-0.01em" }}
           >
             LifePlus Tech
-          </span>
+          </span> */}
         </a>
 
         {/* Center nav — real links, full page navigation */}

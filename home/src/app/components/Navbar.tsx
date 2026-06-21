@@ -1,6 +1,6 @@
-import { AnimatePresence, motion } from "motion/react";
 import { ArrowLeft, Mail, Menu, Moon, Sun } from "lucide-react";
-import logo from "../../imports/Lifeplus_tech.png";
+import { AnimatePresence, motion } from "motion/react";
+import logo from "../../imports/logo.svg";
 import { scrollToSection } from "../lib/scroll";
 
 interface NavbarProps {
@@ -12,7 +12,14 @@ interface NavbarProps {
   selectedName?: string;
 }
 
-export function Navbar({ mode, isDark, onToggleDark, onBack, onOpenMobileNav, selectedName }: NavbarProps) {
+export function Navbar({
+  mode,
+  isDark,
+  onToggleDark,
+  onBack,
+  onOpenMobileNav,
+  selectedName,
+}: NavbarProps) {
   return (
     <header className="sticky top-0 z-30 h-16 bg-white/90 dark:bg-[#0D0D12]/90 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors">
       <div className="h-full flex items-center justify-between px-5 sm:px-7">
@@ -48,7 +55,9 @@ export function Navbar({ mode, isDark, onToggleDark, onBack, onOpenMobileNav, se
 
                 {selectedName && (
                   <>
-                    <span className="text-gray-200 dark:text-gray-700 hidden sm:block">/</span>
+                    <span className="text-gray-200 dark:text-gray-700 hidden sm:block">
+                      /
+                    </span>
                     <span
                       className="text-sm text-gray-600 dark:text-gray-300 truncate hidden sm:block"
                       style={{ fontWeight: 600 }}
@@ -67,13 +76,21 @@ export function Navbar({ mode, isDark, onToggleDark, onBack, onOpenMobileNav, se
                 transition={{ duration: 0.22 }}
                 className="flex items-center gap-3"
               >
-                <img src={logo} alt="LifePlus Tech" className="h-8 w-auto flex-shrink-0" />
-                <span
+                <img
+                  src={logo}
+                  alt="LifePlus Tech"
+                  className="h-8 w-auto flex-shrink-0"
+                />
+                {/* <span
                   className="text-gray-900 dark:text-white hidden sm:block"
-                  style={{ fontWeight: 700, fontSize: "0.9375rem", letterSpacing: "-0.01em" }}
+                  style={{
+                    fontWeight: 700,
+                    fontSize: "0.9375rem",
+                    letterSpacing: "-0.01em",
+                  }}
                 >
                   LifePlus Tech
-                </span>
+                </span> */}
               </motion.div>
             )}
           </AnimatePresence>
@@ -89,16 +106,18 @@ export function Navbar({ mode, isDark, onToggleDark, onBack, onOpenMobileNav, se
               transition={{ duration: 0.2 }}
               className="hidden md:flex items-center gap-0.5 absolute left-1/2 -translate-x-1/2"
             >
-              {["Products", "Services", "About", "Careers", "Contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className="px-4 h-8 rounded-lg text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
-                  style={{ fontWeight: 500 }}
-                >
-                  {item}
-                </button>
-              ))}
+              {["Products", "Services", "About", "Careers", "Contact"].map(
+                (item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item.toLowerCase())}
+                    className="px-4 h-8 rounded-lg text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
+                    style={{ fontWeight: 500 }}
+                  >
+                    {item}
+                  </button>
+                ),
+              )}
             </motion.nav>
           )}
         </AnimatePresence>
@@ -111,11 +130,23 @@ export function Navbar({ mode, isDark, onToggleDark, onBack, onOpenMobileNav, se
           >
             <AnimatePresence mode="wait">
               {isDark ? (
-                <motion.div key="sun" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                <motion.div
+                  key="sun"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
                   <Sun className="w-4 h-4 text-gray-400" />
                 </motion.div>
               ) : (
-                <motion.div key="moon" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                <motion.div
+                  key="moon"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
                   <Moon className="w-4 h-4 text-gray-400" />
                 </motion.div>
               )}

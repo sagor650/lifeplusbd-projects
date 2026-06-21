@@ -1,11 +1,10 @@
 import assetVaultImg from "../../imports/asset-vault.png";
 import digitalRmImg from "../../imports/digital-rm.png";
-import digitalTwinImg from "../../imports/digital-twin.png";
-import medpacImg from "../../imports/medpac.png";
-import udbLogo from "../../imports/udb_logo.svg";
 import lifeplusHubImg from "../../imports/lifeplus-hub.png";
+import medpacImg from "../../imports/medpac.png";
 import optiPanelImg from "../../imports/opti-panel.png";
 import pmsImg from "../../imports/pms.png";
+import udbLogo from "../../imports/udb_logo.svg";
 import virtuState from "../../imports/virtu-state.png";
 import virtuTour from "../../imports/virtu-tour.png";
 
@@ -35,249 +34,6 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  {
-    id: "opti-panel",
-    name: "Opti Panel",
-    category: "Industrial · SCADA System",
-    tagline: "Centralized SCADA system for industrial automation",
-    logoInitial: "OP",
-    logo: optiPanelImg,
-    logoColor: "#8B5CF6",
-    accentColor: "#8B5CF6",
-    cardBg: "linear-gradient(135deg, #F5F0FF 0%, #EDE9FE 100%)",
-    year: "2026",
-    duration: "Ongoing",
-    role: "Industrial Software Engineering",
-    overview:
-      "Opti Panel is an industrial SCADA system that provides real-time monitoring and control for large-scale manufacturing operations.",
-    problem:
-      "Manufacturing industries often rely on fragmented control systems, leading to inefficiencies and delayed operational responses.",
-    process: [
-      {
-        title: "Industrial Workflow Study",
-        description:
-          "Analyzed manufacturing operations to identify automation and monitoring gaps.",
-      },
-      {
-        title: "Control System Design",
-        description:
-          "Built a centralized SCADA architecture for real-time machine and process control.",
-      },
-      {
-        title: "Integration Layer",
-        description:
-          "Connected hardware systems with software interfaces for seamless communication.",
-      },
-    ],
-    features: [
-      {
-        title: "Real-Time Monitoring",
-        description: "Live tracking of industrial machines and processes.",
-      },
-      {
-        title: "Central Control Hub",
-        description: "Unified dashboard for managing factory operations.",
-      },
-      {
-        title: "Alert System",
-        description: "Instant alerts for system failures and anomalies.",
-      },
-    ],
-    metrics: [],
-    tags: ["SCADA", "Industrial", "Automation"],
-    mockupBg: "#F5F0FF",
-    mockupPattern: "industrial",
-    pdfUrl: "/pdf/optipanel-scada-feature-brief.pdf",
-    siteUrl: "https://opti.lifeplusbd.tech/",
-  },
-
-  {
-    id: "digital-twin",
-    name: "medpac",
-    category: "Healthcare · PACS + AI",
-    tagline: "PACS with a built-in AI second opinion",
-    logoInitial: "MP",
-    logo: medpacImg,
-    logoColor: "#D11F3C",
-    accentColor: "#D11F3C",
-    cardBg: "linear-gradient(135deg, #FFF1F3 0%, #FFE4E8 100%)",
-    year: "2026",
-    duration: "Ongoing",
-    role: "Medical Imaging & Full-Stack Engineering",
-    overview:
-      "medpac is a PACS (Picture Archiving & Communication System) for medical imaging with an AI second-opinion engine built in — clinicians review DICOM studies in the browser while an integrated AI model delivers an automated second read alongside.",
-    problem:
-      "Radiology teams are overloaded and second opinions are slow and costly, while legacy PACS stay vendor-locked and desktop-bound.",
-    process: [
-      {
-        title: "PACS & Archive",
-        description:
-          "Vendor-neutral archive and DICOMweb services that ingest and store studies from any modality.",
-      },
-      {
-        title: "AI Second Opinion",
-        description:
-          "Integrated AI models that analyze each study and draft a structured second-read report.",
-      },
-    ],
-    features: [
-      {
-        title: "Browser DICOM Viewer",
-        description: "Zero-install web viewer for CT/MR/CR review on any device.",
-      },
-      {
-        title: "AI Second Opinion",
-        description: "Automated AI analysis and report drafting alongside the radiologist.",
-      },
-    ],
-    metrics: [],
-    tags: ["PACS", "DICOM", "AI"],
-    mockupBg: "#FFF1F3",
-    mockupPattern: "health",
-    pdfUrl: "/pdf/medpac-VNA-PACS.pdf",
-    siteUrl: "https://medpac.lifeplusbd.tech/",
-  },
-
-  {
-    id: "digital-rm",
-    name: "DigitalRM",
-    category: "AI · Digital Employee",
-    tagline: "Agentic AI digital employee (Aria)",
-    logoInitial: "RM",
-    logo: digitalRmImg,
-    logoColor: "#F59E0B",
-    accentColor: "#F59E0B",
-    cardBg: "linear-gradient(135deg, #FFF8ED 0%, #FEF3C7 100%)",
-    year: "2026",
-    duration: "Ongoing",
-    role: "AI Product Engineering",
-    overview:
-      "DigitalRM is an AI digital employee — Aria — that runs enterprise relationship-management workflows with explicit agentic reasoning (plan → act → observe → reflect) over a typed datastore, reachable through webchat and WhatsApp.",
-    problem:
-      "Organizations carry high operational costs and slow turnaround in manual relationship-management and support workflows.",
-    process: [
-      {
-        title: "Agentic Engine",
-        description:
-          "Built a plan → act → observe → reflect reasoning runtime over tiered models.",
-      },
-      {
-        title: "Typed Memory & Audit",
-        description:
-          "Grounded the agent on a typed gRPC datastore for durable memory, auth, and an audit trail.",
-      },
-    ],
-    features: [
-      {
-        title: "Multi-Channel",
-        description: "One agent reachable via webchat and WhatsApp.",
-      },
-      {
-        title: "Proactive Reminders",
-        description: "Schedules tasks and follows up without being asked.",
-      },
-    ],
-    metrics: [],
-    tags: ["AI", "Agent", "Automation"],
-    mockupBg: "#FFF8ED",
-    mockupPattern: "ai",
-    pdfUrl: "/pdf/digitalrm-employee-brief.pdf",
-    siteUrl: "https://digitalrm.lifeplusbd.tech/",
-  },
-
-  {
-    id: "udb",
-    name: "udb",
-    category: "Infrastructure · Data Broker",
-    tagline: "One typed gRPC API over many databases",
-    logoInitial: "UDB",
-    logo: udbLogo,
-    logoColor: "#0EA5E9",
-    accentColor: "#0EA5E9",
-    cardBg: "linear-gradient(135deg, #EEF7FF 0%, #E0F2FE 100%)",
-    year: "2026",
-    duration: "Ongoing",
-    role: "Platform & Systems Engineering",
-    overview:
-      "UDB (Universal Data Broker) is a proto-driven broker that exposes one typed gRPC API over 18+ databases — define entities in protobuf and get auth, audit, CDC, migrations and multi-backend SQL compilation. The live demo runs the real parser, catalog and IR compiler in your browser via WebAssembly.",
-    problem:
-      "Teams glue many databases together with bespoke, untyped code — no unified auth, audit, schema control or portability across backends.",
-    process: [
-      {
-        title: "Proto-Driven Catalog",
-        description:
-          "Define entities once in protobuf; UDB derives schema, migrations and a typed API across every backend.",
-      },
-      {
-        title: "Portable Engine (WASM)",
-        description:
-          "The parser, AST/IR compiler and checksum engine compile to WebAssembly to run anywhere — even the browser.",
-      },
-    ],
-    features: [
-      {
-        title: "One Typed API",
-        description: "gRPC over 18+ SQL, NoSQL, vector and object backends.",
-      },
-      {
-        title: "In-Browser Playground",
-        description: "Real IR-compiled SQL and manifest generation via WASM.",
-      },
-    ],
-    metrics: [],
-    tags: ["gRPC", "Protobuf", "Databases"],
-    mockupBg: "#EEF7FF",
-    mockupPattern: "logistics",
-    pdfUrl: "/pdf/udb-protocol-plus-product-overview.pdf",
-    siteUrl: "https://udb.lifeplusbd.tech/",
-  },
-
-  {
-    id: "pms",
-    name: "PMS",
-    category: "Healthcare · Pharmacy System",
-    tagline: "Pharmacy management and billing automation system",
-    logoInitial: "PM",
-    logo: pmsImg,
-    logoColor: "#10B981",
-    accentColor: "#10B981",
-    cardBg: "linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%)",
-    year: "2026",
-    duration: "Ongoing",
-    role: "Backend & Product Engineering",
-    overview:
-      "PMS automates pharmacy inventory, prescription tracking, and billing operations for healthcare retail businesses.",
-    problem:
-      "Pharmacies often struggle with manual inventory tracking and billing errors.",
-    process: [
-      {
-        title: "System Design",
-        description:
-          "Designed pharmacy-focused data model for inventory and sales tracking.",
-      },
-      {
-        title: "Billing Engine",
-        description: "Built automated billing and invoice generation system.",
-      },
-    ],
-    features: [
-      {
-        title: "Inventory Management",
-        description: "Real-time stock tracking of medicines.",
-      },
-      {
-        title: "Prescription Tracking",
-        description: "Digital prescription records and history.",
-      },
-    ],
-    metrics: [],
-    tags: ["Healthcare", "Pharmacy", "ERP"],
-    mockupBg: "#ECFDF5",
-    mockupPattern: "health",
-    pdfUrl: "/pdf/Lifeplus_Model_Pharma_Doc_White.pdf",
-    siteUrl: "",
-  },
-
   {
     id: "asset-vault",
     name: "Asset Vault",
@@ -334,9 +90,248 @@ export const projects: Project[] = [
     mockupBg: "#EEF4FF",
     mockupPattern: "data",
     pdfUrl: "/pdf/Lifeplus_Asset_Management_Doc.pdf",
-    siteUrl: "",
+    siteUrl: "https://asset.lifeplusbd.tech/login",
   },
-
+  {
+    id: "opti-panel",
+    name: "Opti Panel",
+    category: "Industrial · SCADA System",
+    tagline: "Centralized SCADA system for industrial automation",
+    logoInitial: "OP",
+    logo: optiPanelImg,
+    logoColor: "#8B5CF6",
+    accentColor: "#8B5CF6",
+    cardBg: "linear-gradient(135deg, #F5F0FF 0%, #EDE9FE 100%)",
+    year: "2026",
+    duration: "Ongoing",
+    role: "Industrial Software Engineering",
+    overview:
+      "Opti Panel is an industrial SCADA system that provides real-time monitoring and control for large-scale manufacturing operations.",
+    problem:
+      "Manufacturing industries often rely on fragmented control systems, leading to inefficiencies and delayed operational responses.",
+    process: [
+      {
+        title: "Industrial Workflow Study",
+        description:
+          "Analyzed manufacturing operations to identify automation and monitoring gaps.",
+      },
+      {
+        title: "Control System Design",
+        description:
+          "Built a centralized SCADA architecture for real-time machine and process control.",
+      },
+      {
+        title: "Integration Layer",
+        description:
+          "Connected hardware systems with software interfaces for seamless communication.",
+      },
+    ],
+    features: [
+      {
+        title: "Real-Time Monitoring",
+        description: "Live tracking of industrial machines and processes.",
+      },
+      {
+        title: "Central Control Hub",
+        description: "Unified dashboard for managing factory operations.",
+      },
+      {
+        title: "Alert System",
+        description: "Instant alerts for system failures and anomalies.",
+      },
+    ],
+    metrics: [],
+    tags: ["SCADA", "Industrial", "Automation"],
+    mockupBg: "#F5F0FF",
+    mockupPattern: "industrial",
+    pdfUrl: "/pdf/optipanel-scada-feature-brief.pdf",
+    siteUrl: "https://opti.lifeplusbd.tech/",
+  },
+  {
+    id: "digital-twin",
+    name: "medpac",
+    category: "Healthcare · PACS + AI",
+    tagline: "PACS with a built-in AI second opinion",
+    logoInitial: "MP",
+    logo: medpacImg,
+    logoColor: "#D11F3C",
+    accentColor: "#D11F3C",
+    cardBg: "linear-gradient(135deg, #FFF1F3 0%, #FFE4E8 100%)",
+    year: "2026",
+    duration: "Ongoing",
+    role: "Medical Imaging & Full-Stack Engineering",
+    overview:
+      "medpac is a PACS (Picture Archiving & Communication System) for medical imaging with an AI second-opinion engine built in — clinicians review DICOM studies in the browser while an integrated AI model delivers an automated second read alongside.",
+    problem:
+      "Radiology teams are overloaded and second opinions are slow and costly, while legacy PACS stay vendor-locked and desktop-bound.",
+    process: [
+      {
+        title: "PACS & Archive",
+        description:
+          "Vendor-neutral archive and DICOMweb services that ingest and store studies from any modality.",
+      },
+      {
+        title: "AI Second Opinion",
+        description:
+          "Integrated AI models that analyze each study and draft a structured second-read report.",
+      },
+    ],
+    features: [
+      {
+        title: "Browser DICOM Viewer",
+        description:
+          "Zero-install web viewer for CT/MR/CR review on any device.",
+      },
+      {
+        title: "AI Second Opinion",
+        description:
+          "Automated AI analysis and report drafting alongside the radiologist.",
+      },
+    ],
+    metrics: [],
+    tags: ["PACS", "DICOM", "AI"],
+    mockupBg: "#FFF1F3",
+    mockupPattern: "health",
+    pdfUrl: "/pdf/medpac-VNA-PACS.pdf",
+    siteUrl: "https://medpac.lifeplusbd.tech/",
+  },
+  {
+    id: "digital-rm",
+    name: "DigitalRM",
+    category: "AI · Digital Employee",
+    tagline: "Agentic AI digital employee (Aria)",
+    logoInitial: "RM",
+    logo: digitalRmImg,
+    logoColor: "#F59E0B",
+    accentColor: "#F59E0B",
+    cardBg: "linear-gradient(135deg, #FFF8ED 0%, #FEF3C7 100%)",
+    year: "2026",
+    duration: "Ongoing",
+    role: "AI Product Engineering",
+    overview:
+      "DigitalRM is an AI digital employee — Aria — that runs enterprise relationship-management workflows with explicit agentic reasoning (plan → act → observe → reflect) over a typed datastore, reachable through webchat and WhatsApp.",
+    problem:
+      "Organizations carry high operational costs and slow turnaround in manual relationship-management and support workflows.",
+    process: [
+      {
+        title: "Agentic Engine",
+        description:
+          "Built a plan → act → observe → reflect reasoning runtime over tiered models.",
+      },
+      {
+        title: "Typed Memory & Audit",
+        description:
+          "Grounded the agent on a typed gRPC datastore for durable memory, auth, and an audit trail.",
+      },
+    ],
+    features: [
+      {
+        title: "Multi-Channel",
+        description: "One agent reachable via webchat and WhatsApp.",
+      },
+      {
+        title: "Proactive Reminders",
+        description: "Schedules tasks and follows up without being asked.",
+      },
+    ],
+    metrics: [],
+    tags: ["AI", "Agent", "Automation"],
+    mockupBg: "#FFF8ED",
+    mockupPattern: "ai",
+    pdfUrl: "/pdf/digitalrm-employee-brief.pdf",
+    siteUrl: "https://digitalrm.lifeplusbd.tech/",
+  },
+  {
+    id: "udb",
+    name: "udb",
+    category: "Infrastructure · Data Broker",
+    tagline: "One typed gRPC API over many databases",
+    logoInitial: "UDB",
+    logo: udbLogo,
+    logoColor: "#0EA5E9",
+    accentColor: "#0EA5E9",
+    cardBg: "linear-gradient(135deg, #EEF7FF 0%, #E0F2FE 100%)",
+    year: "2026",
+    duration: "Ongoing",
+    role: "Platform & Systems Engineering",
+    overview:
+      "UDB (Universal Data Broker) is a proto-driven broker that exposes one typed gRPC API over 18+ databases — define entities in protobuf and get auth, audit, CDC, migrations and multi-backend SQL compilation. The live demo runs the real parser, catalog and IR compiler in your browser via WebAssembly.",
+    problem:
+      "Teams glue many databases together with bespoke, untyped code — no unified auth, audit, schema control or portability across backends.",
+    process: [
+      {
+        title: "Proto-Driven Catalog",
+        description:
+          "Define entities once in protobuf; UDB derives schema, migrations and a typed API across every backend.",
+      },
+      {
+        title: "Portable Engine (WASM)",
+        description:
+          "The parser, AST/IR compiler and checksum engine compile to WebAssembly to run anywhere — even the browser.",
+      },
+    ],
+    features: [
+      {
+        title: "One Typed API",
+        description: "gRPC over 18+ SQL, NoSQL, vector and object backends.",
+      },
+      {
+        title: "In-Browser Playground",
+        description: "Real IR-compiled SQL and manifest generation via WASM.",
+      },
+    ],
+    metrics: [],
+    tags: ["gRPC", "Protobuf", "Databases"],
+    mockupBg: "#EEF7FF",
+    mockupPattern: "logistics",
+    pdfUrl: "/pdf/udb-protocol-plus-product-overview.pdf",
+    siteUrl: "https://udb.lifeplusbd.tech/",
+  },
+  {
+    id: "pms",
+    name: "PMS",
+    category: "Healthcare · Pharmacy System",
+    tagline: "Pharmacy management and billing automation system",
+    logoInitial: "PM",
+    logo: pmsImg,
+    logoColor: "#10B981",
+    accentColor: "#10B981",
+    cardBg: "linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%)",
+    year: "2026",
+    duration: "Ongoing",
+    role: "Backend & Product Engineering",
+    overview:
+      "PMS automates pharmacy inventory, prescription tracking, and billing operations for healthcare retail businesses.",
+    problem:
+      "Pharmacies often struggle with manual inventory tracking and billing errors.",
+    process: [
+      {
+        title: "System Design",
+        description:
+          "Designed pharmacy-focused data model for inventory and sales tracking.",
+      },
+      {
+        title: "Billing Engine",
+        description: "Built automated billing and invoice generation system.",
+      },
+    ],
+    features: [
+      {
+        title: "Inventory Management",
+        description: "Real-time stock tracking of medicines.",
+      },
+      {
+        title: "Prescription Tracking",
+        description: "Digital prescription records and history.",
+      },
+    ],
+    metrics: [],
+    tags: ["Healthcare", "Pharmacy", "ERP"],
+    mockupBg: "#ECFDF5",
+    mockupPattern: "health",
+    pdfUrl: "/pdf/Lifeplus_Model_Pharma_Doc_White.pdf",
+    siteUrl: "https://pms.lifeplusbd.tech/",
+  },
   {
     id: "lifeplus-hub",
     name: "Lifeplus Hub",
@@ -382,7 +377,6 @@ export const projects: Project[] = [
     pdfUrl: "/pdf/Lifeplus_Broadcast_System_Doc.pdf",
     siteUrl: "",
   },
-
   {
     id: "virtustate",
     name: "VirtuState",
@@ -429,7 +423,6 @@ export const projects: Project[] = [
     pdfUrl: "/pdf/Virtual_Estate_Overview.pdf",
     siteUrl: "https://estate.lifeplusbd.tech/",
   },
-
   {
     id: "virtutour",
     name: "VirtuTour",
