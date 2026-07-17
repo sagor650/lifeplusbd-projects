@@ -466,7 +466,7 @@ export const projects: Project[] = [
     tags: ["Travel", "Tourism", "Booking"],
     mockupBg: "#EDFAFA",
     mockupPattern: "travel",
-    pdfUrl: "/pdf/file-sample_150kB.pdf",
+    pdfUrl: "/pdf/VirtuTour-Platform-Overview.pdf",
     siteUrl: "https://tourism.lifeplusbd.tech/",
   },
 ];

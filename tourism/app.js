@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════
    VirtuTour Dashboard – app.js
-   UE5 Pixel Streaming · Hotel Interior Explorer
+   360° 3D Virtual Tours · Map Automation
    ═══════════════════════════════════════════════ */
 
 'use strict';
@@ -10,19 +10,19 @@ const HOTELS = {
   'pan-pacific': {
     id: 'pan-pacific',
     name: 'Pan Pacific Sonargaon',
-    subtitle: 'Grand Suite Interior – Virtual Tourism Preview',
+    subtitle: 'Grand Suite · 360° panoramic walk-through',
     img: 'assets/pan_pacific_suite.png',
   },
   intercontinental: {
     id: 'intercontinental',
     name: 'InterContinental Lobby',
-    subtitle: 'Grand Lobby & Atrium – 8K Fidelity Stream',
+    subtitle: 'Grand Lobby & Atrium – 360° Panoramic Tour',
     img: 'assets/intercontinental_lobby.png',
   },
   radisson: {
     id: 'radisson',
     name: 'Radisson Blu Poolside',
-    subtitle: 'Rooftop Infinity Pool – Virtual Relaxation Preview',
+    subtitle: 'Rooftop Infinity Pool – 360° Walk-Through',
     img: 'assets/radisson_poolside.png',
   },
   sheraton: {
@@ -38,7 +38,7 @@ const BOOKINGS = [
     id: 'BK-001', day: '12', mon: 'OCT',
     name: 'Grand Suite – Dhaka',
     hotel: 'Pan Pacific Sonargaon',
-    meta: 'GUEST: ALEX_999  |  DUR: 45M  |  PIXEL_STREAM',
+    meta: 'GUEST: ALEX_999  |  DUR: 45M  |  360_TOUR',
     status: 'confirmed', vrTag: true,
     suite: 'Grand Suite · Dhaka',
   },
@@ -46,7 +46,7 @@ const BOOKINGS = [
     id: 'BK-002', day: '14', mon: 'OCT',
     name: 'Sea View Executive – Cox\'s Bazar',
     hotel: 'Radisson Blu',
-    meta: 'GUEST: SARAH_K  |  DUR: 1H 30M  |  VR_NATIVE',
+    meta: 'GUEST: SARAH_K  |  DUR: 1H 30M  |  360_TOUR',
     status: 'pending', vrTag: true,
     suite: 'Sea View Executive',
   },
@@ -54,7 +54,7 @@ const BOOKINGS = [
     id: 'BK-003', day: '18', mon: 'OCT',
     name: 'Presidential Suite – Gulshan',
     hotel: 'InterContinental',
-    meta: 'GUEST: MR_RAHMAN  |  DUR: 2H  |  PIXEL_STREAM',
+    meta: 'GUEST: MR_RAHMAN  |  DUR: 2H  |  360_TOUR',
     status: 'confirmed', vrTag: true,
     suite: 'Presidential Suite',
   },
@@ -62,7 +62,7 @@ const BOOKINGS = [
     id: 'BK-004', day: '21', mon: 'OCT',
     name: 'Deluxe King Room – Banani',
     hotel: 'Sheraton Grand',
-    meta: 'GUEST: NADIA_F  |  DUR: 30M  |  VR_NATIVE',
+    meta: 'GUEST: NADIA_F  |  DUR: 30M  |  360_TOUR',
     status: 'pending', vrTag: false,
     suite: 'Deluxe King Room',
   },
@@ -70,19 +70,20 @@ const BOOKINGS = [
     id: 'BK-005', day: '25', mon: 'OCT',
     name: 'Honeymoon Suite – Sylhet',
     hotel: 'Pan Pacific',
-    meta: 'GUEST: COUPLE_01  |  DUR: 1H  |  PIXEL_STREAM',
+    meta: 'GUEST: COUPLE_01  |  DUR: 1H  |  360_TOUR',
     status: 'confirmed', vrTag: true,
     suite: 'Honeymoon Suite',
   },
 ];
 
+// Tour projects — each 360° tour, its auto-generated scenes/hotspots + map link status
 const STREAMS = [
-  { id: 'S1', hotel: 'Pan Pacific Sonargaon', status: 'live', fps: 72, bitrate: '125 Mbps', viewers: 1284, img: 'assets/pan_pacific_suite.png' },
-  { id: 'S2', hotel: 'InterContinental Lobby', status: 'live', fps: 60, bitrate: '98 Mbps', viewers: 437, img: 'assets/intercontinental_lobby.png' },
-  { id: 'S3', hotel: 'Radisson Blu Poolside', status: 'buffering', fps: 45, bitrate: '62 Mbps', viewers: 88, img: 'assets/radisson_poolside.png' },
-  { id: 'S4', hotel: 'Sheraton Ballroom', status: 'idle', fps: 0, bitrate: '—', viewers: 0, img: 'assets/sheraton_ballroom.png' },
-  { id: 'S5', hotel: 'Holiday Inn Executive', status: 'idle', fps: 0, bitrate: '—', viewers: 0, img: '' },
-  { id: 'S6', hotel: 'Six Seasons Penthouse', status: 'live', fps: 90, bitrate: '210 Mbps', viewers: 652, img: '' },
+  { id: 'S1', hotel: 'Pan Pacific Sonargaon', status: 'live', scenes: 24, hotspots: 146, visitors: 1284, img: 'assets/pan_pacific_suite.png' },
+  { id: 'S2', hotel: 'InterContinental Dhaka', status: 'live', scenes: 18, hotspots: 92, visitors: 437, img: 'assets/intercontinental_lobby.png' },
+  { id: 'S3', hotel: 'Radisson Blu Chattogram', status: 'buffering', scenes: 12, hotspots: 54, visitors: 88, img: 'assets/radisson_poolside.png' },
+  { id: 'S4', hotel: 'Sheraton Grand Ballroom', status: 'idle', scenes: 0, hotspots: 0, visitors: 0, img: 'assets/sheraton_ballroom.png' },
+  { id: 'S5', hotel: "Cox's Bazar Beach Resort", status: 'idle', scenes: 0, hotspots: 0, visitors: 0, img: '' },
+  { id: 'S6', hotel: 'Sylhet Tea Estate Villa', status: 'live', scenes: 31, hotspots: 210, visitors: 652, img: '' },
 ];
 
 
@@ -157,7 +158,7 @@ function renderFullBookings() {
 
   const headerRow = document.createElement('div');
   headerRow.className = 'full-booking-header-row';
-  headerRow.innerHTML = `<span>DATE</span><span>SUITE</span><span>VR</span><span>TYPE</span><span>STATUS</span>`;
+  headerRow.innerHTML = `<span>DATE</span><span>SPACE</span><span>TOUR</span><span>CATEGORY</span><span>STATUS</span>`;
   container.innerHTML = '';
   container.appendChild(headerRow);
 
@@ -173,7 +174,7 @@ function renderFullBookings() {
         <div class="full-booking-name">${b.name}</div>
         <div class="full-booking-detail">${b.meta}</div>
       </div>
-      ${b.vrTag ? '<span class="vr-tag">VR PREVIEW</span>' : '<span></span>'}
+      ${b.vrTag ? '<span class="vr-tag">360° TOUR</span>' : '<span></span>'}
       <span class="suite-pill">${b.suite}</span>
       <button class="booking-status-btn ${b.status}">${b.status === 'confirmed' ? 'CONFIRMED' : 'PENDING'}</button>
     `;
@@ -189,10 +190,10 @@ function renderStreams() {
   STREAMS.forEach(s => {
     const card = document.createElement('div');
     card.className = 'stream-card glass-card';
-    const statusLabel = s.status === 'live' ? 'LIVE' : s.status === 'buffering' ? 'BUFFERING' : 'IDLE';
+    const statusLabel = s.status === 'live' ? 'PUBLISHED' : s.status === 'buffering' ? 'PROCESSING' : 'DRAFT';
     const imgHtml = s.img
-      ? `<img src="${s.img}" alt="${s.hotel} stream thumbnail" />`
-      : `<div style="width:100%;height:100%;background:linear-gradient(135deg,#e0e7ef,#f0f4ff);display:grid;place-items:center;color:#8C95A6;font-size:0.7rem;font-weight:600;">NO FEED</div>`;
+      ? `<img src="${s.img}" alt="${s.hotel} 360° tour thumbnail" />`
+      : `<div style="width:100%;height:100%;background:linear-gradient(135deg,#e0e7ef,#f0f4ff);display:grid;place-items:center;color:#8C95A6;font-size:0.7rem;font-weight:600;">NO TOUR YET</div>`;
     card.innerHTML = `
       <div class="stream-card-header">
         <span class="stream-card-title">${s.hotel}</span>
@@ -200,9 +201,9 @@ function renderStreams() {
       </div>
       <div class="stream-thumb">${imgHtml}</div>
       <div class="stream-stats">
-        <div class="stream-stat"><span>FPS</span><strong>${s.fps || '—'}</strong></div>
-        <div class="stream-stat"><span>BITRATE</span><strong>${s.bitrate}</strong></div>
-        <div class="stream-stat"><span>VIEWERS</span><strong>${s.viewers.toLocaleString()}</strong></div>
+        <div class="stream-stat"><span>SCENES</span><strong>${s.scenes || '—'}</strong></div>
+        <div class="stream-stat"><span>HOTSPOTS</span><strong>${s.hotspots || '—'}</strong></div>
+        <div class="stream-stat"><span>VISITORS</span><strong>${(s.visitors || 0).toLocaleString()}</strong></div>
       </div>
     `;
     grid.appendChild(card);
@@ -225,7 +226,7 @@ function switchHero(hotelKey) {
   heroImg.style.opacity = '0';
   setTimeout(() => {
     heroImg.src = hotel.img;
-    heroImg.alt = `${hotel.name} UE5 Pixel Stream preview`;
+    heroImg.alt = `${hotel.name} 360° virtual tour`;
     heroTitle.textContent = hotel.name;
     heroSubtitle.textContent = hotel.subtitle;
     heroImg.style.opacity = '1';
@@ -238,7 +239,7 @@ qsa('.card-stream-btn').forEach(btn => {
     e.stopPropagation();
     const hotel = btn.dataset.hotel;
     switchHero(hotel);
-    showToast('🎬', `Switched to ${HOTELS[hotel]?.name || hotel} stream`);
+    showToast('🎬', `Opened ${HOTELS[hotel]?.name || hotel} tour`);
   });
 });
 
@@ -255,7 +256,7 @@ const vrModal = $('vrModal');
 function openVrModal() {
   const hotel = HOTELS[activeHero] || HOTELS['pan-pacific'];
   $('modalTitle').textContent = `VR Preview · ${hotel.name}`;
-  $('modalDesc').textContent = `Connecting to UE5 signaling server for ${hotel.subtitle}…`;
+  $('modalDesc').textContent = `Loading 360° panorama scenes for ${hotel.subtitle}…`;
   $('streamPreviewImg').src = hotel.img;
 
   vrModal.classList.add('open');
@@ -269,7 +270,7 @@ function openVrModal() {
     $('streamLoading').style.display = 'none';
     $('streamReady').classList.remove('hidden');
     $('hudFps').textContent = `${Math.floor(60 + Math.random() * 30)} fps`;
-    showToast('✅', '8K Pixel Stream established');
+    showToast('✅', '360° tour loaded');
   }, 2200);
 }
 
@@ -282,7 +283,7 @@ $('launchVrBtn')?.addEventListener('click', openVrModal);
 $('modalClose')?.addEventListener('click', closeVrModal);
 $('modalEndStream')?.addEventListener('click', () => {
   closeVrModal();
-  showToast('⏹', 'Stream session ended');
+  showToast('⏹', 'Tour closed');
 });
 $('modalConfirmBooking')?.addEventListener('click', () => {
   closeVrModal();
@@ -299,27 +300,27 @@ $('copySignaling')?.addEventListener('click', () => {
   const val = $('signalingUrl')?.value;
   if (val) {
     navigator.clipboard?.writeText(val).catch(() => {});
-    showToast('📋', 'Signaling URL copied to clipboard');
+    showToast('📋', 'Tour URL copied to clipboard');
   }
 });
 
 $('testConnectionBtn')?.addEventListener('click', () => {
   const bar = $('connectionStatusBar');
   if (bar) {
-    bar.innerHTML = `<span class="conn-dot" style="background:var(--accent-amber)"></span><span class="conn-text">Testing connection…</span>`;
+    bar.innerHTML = `<span class="conn-dot" style="background:var(--accent-amber)"></span><span class="conn-text">Building interactive map preview…</span>`;
     setTimeout(() => {
-      bar.innerHTML = `<span class="conn-dot green"></span><span class="conn-text">Signaling server active · Bangladesh Hub · RTT ${(2 + Math.random() * 5).toFixed(1)}ms</span>`;
-      showToast('🔗', 'Connection test successful · Bangladesh Hub');
+      bar.innerHTML = `<span class="conn-dot green"></span><span class="conn-text">Map preview ready · 24 scenes auto-linked · ${146} hotspots</span>`;
+      showToast('🗺️', 'Interactive map generated from tour scenes');
     }, 1800);
   }
 });
 
 $('applyConfigBtn')?.addEventListener('click', () => {
-  showToast('⚙️', 'Stream configuration applied');
+  showToast('⚙️', 'Tour published · map linked');
 });
 
 $('newStreamBtn')?.addEventListener('click', () => {
-  showToast('📡', 'New stream session initializing…');
+  showToast('📡', 'Auto-linking scenes to map…');
 });
 
 $('newBookingBtn')?.addEventListener('click', () => {
@@ -337,33 +338,24 @@ $('syncBtn')?.addEventListener('click', () => {
         <path d="M23 4v6h-6M1 20v-6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      SYNC HEADSET`;
+      SYNC MAP DATA`;
     btn.style.opacity = '1';
-    showToast('🥽', `${DEVICES.length} headsets synced · Bangladesh Hub`);
+    showToast('🗺️', 'Map data synced · 24 scenes · 146 hotspots');
   }, 1500);
 });
 
 // ─── LIVE METRICS TICKER ─────────────────────────
 function animateMetrics() {
-  const latencyVal = $('latencyVal');
-  const throughputVal = $('throughputVal');
-  const vertexVal = $('vertexVal');
+  // TOUR_SCENES + MAP_HOTSPOTS + PANORAMA_RES stay stable (set in HTML);
+  // VISITORS_TODAY + avg time-on-tour tick live.
   const viewersVal = $('viewersVal');
   const viewersSub = $('viewersSub');
 
   setInterval(() => {
-    const latency = (10 + Math.random() * 8).toFixed(1);
-    const throughput = Math.floor(110 + Math.random() * 30);
-    const viewers = Math.floor(1200 + Math.random() * 200);
-    const loadPct = Math.floor((viewers / 1600) * 100);
-
-    if (latencyVal) latencyVal.textContent = `${latency}ms`;
-    if (throughputVal) throughputVal.textContent = `${throughput}Mbps`;
-    if (viewersVal) viewersVal.textContent = viewers.toLocaleString();
-    if (viewersSub) {
-      viewersSub.textContent = `MAX LOAD: ${loadPct}%`;
-      viewersSub.style.color = loadPct > 80 ? 'var(--accent-red)' : 'var(--text-muted)';
-    }
+    const visitors = Math.floor(1200 + Math.random() * 220);
+    const avgMin = (2.8 + Math.random() * 1.4).toFixed(1);
+    if (viewersVal) viewersVal.textContent = visitors.toLocaleString();
+    if (viewersSub) viewersSub.textContent = `AVG ${avgMin} MIN/TOUR`;
   }, 3000);
 }
 
@@ -402,7 +394,7 @@ function init() {
   renderStreams();
   animateMetrics();
   // Greet
-  setTimeout(() => showToast('🌐', 'Bangladesh Hub · NEXUS_VH Online · UE5 Ready'), 600);
+  setTimeout(() => showToast('🌐', 'Bangladesh · VirtuTour Online · 360° tours ready'), 600);
 }
 
 document.addEventListener('DOMContentLoaded', init);
