@@ -13,6 +13,11 @@ This repository contains multiple front-end builds and static site prototypes fo
   - Built with React, Tailwind CSS, Radix UI, and Vite.
   - Contains the main interactive application in `home/src` and a complete Vite configuration.
 
+- `labaidai`
+  - Interactive Labaid AI executive product-delivery roadmap.
+  - Builds 27 directly addressable KPI brief pages plus the portfolio overview.
+  - Served at `labaidai.lifeplusbd.tech`.
+
 - `estate`
   - VirtuState landing page for virtual estate and real estate 3D experiences.
   - Includes full HTML/CSS content and branding for `estate.lifeplusbd.tech`.
@@ -66,7 +71,8 @@ The `home` project is the main local development application in this repository.
 ## Notes
 
 - Most folders are simple static HTML pages and can be served from any static web server.
-- The `home` folder is the only project with a full Node-based build setup.
+- The `labaidai` folder is a Vite build whose generated `dist` directory is mapped to `labaidai.lifeplusbd.tech` on the existing droplet.
+- The `home` and `labaidai` folders have Node-based Vite build setups.
 - Use the folder names to identify corresponding deployed subdomains and brand experiences.
 
 ## Deployment
@@ -102,7 +108,7 @@ Required GitHub secrets for DigitalOcean App Platform:
 - `DO_APP_ID`
 
 Deployment behavior:
-- Builds `home` on every push to `main`
+- Builds `home` and `labaidai` on every push to `main`
 - Uses `doctl` to update the App Platform app with the spec in `app.yaml`
 
 If the app is not yet created, create it from the DigitalOcean control panel or with `doctl apps create --spec app.yaml` and then set `DO_APP_ID`.

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://labaidai.lifeplusbd.tech/sitemap.xml

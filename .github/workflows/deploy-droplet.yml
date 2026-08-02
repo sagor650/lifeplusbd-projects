@@ -47,8 +47,13 @@ jobs:
             cd /var/www/lifeplusbd-projects
           fi
 
-          echo "Installing dependencies..."
-          cd home
+          echo "Building Labaid AI roadmap..."
+          cd labaidai
+          npm ci
+          npm run build
+
+          echo "Installing home dependencies..."
+          cd ../home
           npm install
 
           echo "Building home app..."
@@ -64,6 +69,9 @@ jobs:
           else
             echo "No systemd service or PM2 found. Please start the app manually or add a service."
           fi
+
+          nginx -t
+          systemctl reload nginx
 
           echo "Deployment complete!"
           EOF
