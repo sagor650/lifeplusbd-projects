@@ -15,7 +15,7 @@ This repository contains multiple front-end builds and static site prototypes fo
 
 - `labaidai`
   - Interactive Labaid AI executive product-delivery roadmap.
-  - Builds 28 directly addressable KPI brief pages plus the portfolio overview.
+  - Builds 29 directly addressable KPI brief pages plus the portfolio overview.
   - Served at `labaidai.lifeplusbd.tech`.
 
 - `estate`
