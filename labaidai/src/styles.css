@@ -34,6 +34,10 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+button {
+  font: inherit;
+}
+
 .timeline-page {
   min-height: 100vh;
   padding: 20px 22px 24px;
@@ -100,7 +104,8 @@ a {
   white-space: nowrap;
 }
 
-.timeline-key span {
+.timeline-key > span,
+.timeline-key > button {
   display: inline-flex;
   min-height: 34px;
   align-items: center;
@@ -112,8 +117,25 @@ a {
   box-shadow: 0 3px 12px rgba(31, 43, 69, 0.04);
 }
 
-.timeline-key span:first-child {
+.timeline-key > span:first-child {
   color: #946400;
+}
+
+.timeline-key > button {
+  cursor: pointer;
+  color: #ffffff;
+  border-color: #2672df;
+  background: #2672df;
+  transition: background 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.timeline-key > button:hover,
+.timeline-key > button:focus-visible {
+  outline: 2px solid rgba(38, 114, 223, 0.28);
+  outline-offset: 2px;
+  background: #185fbf;
+  box-shadow: 0 7px 18px rgba(38, 114, 223, 0.22);
+  transform: translateY(-1px);
 }
 
 .timeline-shell {
@@ -183,7 +205,7 @@ a {
 
 .timeline-row {
   position: relative;
-  min-height: 176px;
+  min-height: 194px;
   border-bottom: 1px solid color-mix(in srgb, var(--product-accent) 23%, #d7dee9);
   background: var(--product-wash);
 }
@@ -276,6 +298,13 @@ a {
   border-left: 1px solid color-mix(in srgb, var(--product-accent) 20%, #d7dee9);
 }
 
+.month-slot--stacked {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  padding-block: 10px;
+}
+
 .timeline-card {
   position: relative;
   display: flex;
@@ -294,6 +323,14 @@ a {
   text-decoration: none;
   box-shadow: 0 3px 11px rgba(31, 43, 69, 0.06);
   transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.month-slot--stacked .timeline-card {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  gap: 3px;
+  padding: 8px 10px;
 }
 
 .timeline-card[data-release="true"] {
@@ -363,23 +400,43 @@ a {
 }
 
 .timeline-card > strong {
+  display: -webkit-box;
   overflow: hidden;
   color: #1d2939;
   font-size: 0.72rem;
   line-height: 1.3;
   text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .card-kpi {
-  display: flex;
-  overflow: hidden;
+  display: grid;
+  min-width: 0;
   align-items: baseline;
+  grid-template-columns: auto minmax(0, 1fr);
   gap: 5px;
   color: #475467;
   font-size: 0.64rem;
   font-weight: 680;
   line-height: 1.26;
   text-overflow: ellipsis;
+}
+
+.card-kpi > span {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.month-slot--stacked .timeline-card > strong,
+.month-slot--stacked .card-kpi {
+  font-size: 0.66rem;
+}
+
+.month-slot--stacked .card-kpi > span {
+  -webkit-line-clamp: 2;
 }
 
 .card-kpi small {
@@ -682,6 +739,211 @@ a {
 
 .not-found h1 {
   margin: 0;
+}
+
+@page {
+  size: A3 landscape;
+  margin: 8mm;
+}
+
+@media print {
+  :root,
+  html,
+  body {
+    width: auto;
+    min-width: 0;
+    min-height: 0;
+    background: #ffffff;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .timeline-page {
+    min-height: 0;
+    padding: 0;
+  }
+
+  .timeline-titlebar {
+    min-height: 18mm;
+    gap: 5mm;
+    padding: 0 0 3mm;
+  }
+
+  .roadmap-brand {
+    gap: 4mm;
+  }
+
+  .roadmap-brand > img {
+    width: 38mm;
+    height: 11mm;
+  }
+
+  .roadmap-brand > div {
+    padding-left: 4mm;
+  }
+
+  .timeline-titlebar h1 {
+    font-size: 17pt;
+  }
+
+  .timeline-titlebar p {
+    margin-top: 1.4mm;
+    font-size: 6.2pt;
+  }
+
+  .timeline-key {
+    font-size: 6.2pt;
+  }
+
+  .timeline-key > span {
+    min-height: 7mm;
+    padding: 0 3mm;
+    box-shadow: none;
+  }
+
+  .timeline-key > span:nth-child(2),
+  .timeline-key > .print-button {
+    display: none;
+  }
+
+  .timeline-shell {
+    overflow: visible;
+    border-radius: 3mm;
+    box-shadow: none;
+  }
+
+  .timeline-scroll {
+    width: 100%;
+    min-width: 0;
+    overflow: visible;
+  }
+
+  .timeline-header,
+  .timeline-row {
+    grid-template-columns: 51mm minmax(0, 1fr);
+  }
+
+  .timeline-header {
+    min-height: 10mm;
+  }
+
+  .product-column-title {
+    position: static;
+    padding: 0 4mm;
+    font-size: 5.8pt;
+  }
+
+  .month-header > div {
+    font-size: 5.7pt;
+  }
+
+  .timeline-row {
+    height: 34.5mm;
+    min-height: 34.5mm;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .product-cell {
+    position: static;
+    gap: 3mm;
+    padding: 3mm 4mm;
+  }
+
+  .product-visual {
+    width: 15mm;
+    height: 14mm;
+    flex-basis: 15mm;
+    border-radius: 3mm;
+    box-shadow: none;
+  }
+
+  .division-label {
+    margin-bottom: 0.8mm;
+    font-size: 4.7pt;
+  }
+
+  .product-cell h2 {
+    font-size: 8.3pt;
+  }
+
+  .product-cell p {
+    max-width: 26mm;
+    margin-top: 1.1mm;
+    font-size: 5.2pt;
+    line-height: 1.28;
+  }
+
+  .month-slot,
+  .month-slot--stacked {
+    gap: 1.2mm;
+    padding: 2mm;
+  }
+
+  .timeline-card,
+  .month-slot--stacked .timeline-card {
+    min-height: 0;
+    gap: 0.8mm;
+    padding: 1.6mm 1.8mm;
+    border-left-width: 1mm;
+    border-radius: 2mm;
+    box-shadow: none;
+  }
+
+  .timeline-card:hover,
+  .timeline-card:focus-visible {
+    transform: none;
+  }
+
+  .card-meta {
+    font-size: 4.6pt;
+  }
+
+  .card-meta svg {
+    width: 3mm;
+    height: 3mm;
+  }
+
+  .timeline-card > strong,
+  .month-slot--stacked .timeline-card > strong {
+    font-size: 5.8pt;
+    line-height: 1.2;
+  }
+
+  .card-kpi,
+  .month-slot--stacked .card-kpi {
+    gap: 1mm;
+    font-size: 4.8pt;
+    line-height: 1.18;
+  }
+
+  .card-kpi small {
+    font-size: 4.1pt;
+  }
+
+  .timeline-card::after,
+  .timeline-card:hover::after,
+  .timeline-card:focus-visible::after {
+    position: static;
+    display: block;
+    min-height: 0;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: color-mix(in srgb, var(--product-ink) 78%, #475467);
+    font-size: 4.25pt;
+    line-height: 1.12;
+    text-align: left;
+    opacity: 1;
+    transform: none;
+  }
+
+  .detail-page {
+    display: none;
+  }
 }
 
 @media (max-width: 800px) {

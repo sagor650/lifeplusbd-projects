@@ -1,5 +1,5 @@
 import { useEffect, type CSSProperties } from "react";
-import { ArrowLeft, Star } from "lucide-react";
+import { ArrowLeft, Printer, Star } from "lucide-react";
 import {
   milestoneBySlug,
   milestones,
@@ -55,6 +55,14 @@ function TimelinePage() {
           <div className="timeline-key" aria-label="Timeline legend">
             <span><Star size={15} fill="currentColor" aria-hidden /> Release</span>
             <span>Hover a card for its exact date</span>
+            <button
+              className="print-button"
+              type="button"
+              title="Open the print dialog with the A3 landscape layout"
+              onClick={() => window.print()}
+            >
+              <Printer size={15} aria-hidden /> Print A3 PDF
+            </button>
           </div>
         </header>
 
@@ -85,7 +93,11 @@ function TimelinePage() {
                     );
 
                     return (
-                      <div className="month-slot" key={month} aria-label={`${product.name} ${month} deliverables`}>
+                      <div
+                        className={`month-slot${entries.length > 1 ? " month-slot--stacked" : ""}`}
+                        key={month}
+                        aria-label={`${product.name} ${month} deliverables`}
+                      >
                         {entries.map((milestone) => (
                           <a
                             className="timeline-card"
@@ -100,7 +112,7 @@ function TimelinePage() {
                               {milestone.release ? <Star size={15} fill="currentColor" aria-label="Release" /> : null}
                             </span>
                             <strong>{milestone.title}</strong>
-                            <span className="card-kpi"><small>KPI</small>{milestone.kpi}</span>
+                            <span className="card-kpi"><small>KPI</small><span>{milestone.kpi}</span></span>
                           </a>
                         ))}
                       </div>
@@ -188,7 +200,7 @@ function DetailPage({ slug }: { slug: string }) {
               <strong>{milestone.kpi}</strong>
             </section>
             <section className="description-fact">
-              <span>Short description</span>
+              <span>Deliverable definition</span>
               <p>{milestone.description}</p>
             </section>
             <section className="basis-fact">
