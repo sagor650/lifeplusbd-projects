@@ -191,6 +191,10 @@ function DetailPage({ slug }: { slug: string }) {
               <span>Short description</span>
               <p>{milestone.description}</p>
             </section>
+            <section className="basis-fact">
+              <span>Roadmap basis</span>
+              <strong>{milestone.basis}</strong>
+            </section>
           </div>
         </article>
       </div>
