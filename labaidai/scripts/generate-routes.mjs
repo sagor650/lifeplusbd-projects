@@ -1,4 +1,4 @@
-import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -15,15 +15,5 @@ for (const slug of slugs) {
 }
 
 await copyFile(builtIndex, resolve(projectRoot, "dist/404.html"));
-
-const sitemap = [
-  "https://labaidai.lifeplusbd.tech/",
-  ...slugs.map((slug) => `https://labaidai.lifeplusbd.tech/kpi/${slug}/`),
-].map((url) => `  <url><loc>${url}</loc></url>`).join("\n");
-
-await writeFile(
-  resolve(projectRoot, "dist/sitemap.xml"),
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap}\n</urlset>\n`,
-);
 
 console.log(`Generated ${slugs.length} KPI routes.`);
