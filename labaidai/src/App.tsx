@@ -1,5 +1,5 @@
 import { useEffect, type CSSProperties } from "react";
-import { ArrowLeft, Factory, ScanFace, Star } from "lucide-react";
+import { ArrowLeft, Star } from "lucide-react";
 import {
   milestoneBySlug,
   milestones,
@@ -25,29 +25,11 @@ const productStyle = (product: Product) => ({
 }) as CSSProperties;
 
 function ProductVisual({ product }: { product: Product }) {
-  if (product.visual === "face-scan") {
-    return (
-      <span className="product-visual oem-visual" aria-label="Face liveness and verification engine">
-        <ScanFace size={27} strokeWidth={1.8} aria-hidden />
-        <small>FLVE</small>
-      </span>
-    );
-  }
-
-  if (product.visual === "oem") {
-    return (
-      <span className="product-visual oem-visual" aria-label="OEM manufacturing partner">
-        <Factory size={25} strokeWidth={1.8} aria-hidden />
-        <small>OEM</small>
-      </span>
-    );
-  }
-
   return (
-    <span className="product-visual">
+    <span className={`product-visual product-visual--${product.imageFit ?? "cover"}`}>
       <img
         src={product.image}
-        alt={product.imageAlt ?? ""}
+        alt={product.imageAlt}
         style={{ objectPosition: product.imagePosition }}
       />
     </span>
@@ -63,9 +45,12 @@ function TimelinePage() {
     <main className="timeline-page">
       <section className="timeline-view" aria-labelledby="timeline-title">
         <header className="timeline-titlebar">
-          <div>
-            <h1 id="timeline-title">Product development timeline</h1>
-            <p>Delivered releases + August–December 2026</p>
+          <div className="roadmap-brand">
+            <img src="/labaid-ai-logo.png" alt="Labaid AI" />
+            <div>
+              <h1 id="timeline-title">Labaid AI Roadmap</h1>
+              <p>Product development timeline · delivered + August–December 2026</p>
+            </div>
           </div>
           <div className="timeline-key" aria-label="Timeline legend">
             <span><Star size={15} fill="currentColor" aria-hidden /> Release</span>
@@ -143,10 +128,18 @@ function DetailPage({ slug }: { slug: string }) {
   if (!milestone) {
     return (
       <main className="detail-page">
-        <a className="back-link" href="/"><ArrowLeft size={17} aria-hidden /> Timeline</a>
-        <section className="detail-box not-found">
-          <h1>Timeline item not found</h1>
-        </section>
+        <div className="detail-layout">
+          <header className="detail-brandbar">
+            <a className="back-link" href="/"><ArrowLeft size={17} aria-hidden /> Roadmap</a>
+            <a className="detail-brand" href="/">
+              <img src="/labaid-ai-logo.png" alt="Labaid AI" />
+              <span>Labaid AI Roadmap<small>Product development timeline</small></span>
+            </a>
+          </header>
+          <section className="detail-box not-found">
+            <h1>Timeline item not found</h1>
+          </section>
+        </div>
       </main>
     );
   }
@@ -155,35 +148,52 @@ function DetailPage({ slug }: { slug: string }) {
 
   return (
     <main className="detail-page" style={productStyle(product)}>
-      <a className="back-link" href="/"><ArrowLeft size={17} aria-hidden /> Timeline</a>
+      <div className={`detail-backdrop detail-backdrop--${product.imageFit ?? "cover"}`} aria-hidden="true">
+        <img src={product.image} alt="" style={{ objectPosition: product.imagePosition }} />
+      </div>
+      <div className="detail-tint" aria-hidden="true" />
 
-      <article className="detail-box">
-        <header className="detail-header">
-          <div className="detail-product">
-            <ProductVisual product={product} />
-            <div>
-              <span>{product.name} · {product.division}</span>
-              <time>{milestone.exactDate}</time>
-            </div>
-          </div>
-          <div className="detail-status">
-            <span>{milestone.status}</span>
-            {milestone.release ? <span><Star size={15} fill="currentColor" aria-hidden /> Release</span> : null}
-          </div>
-          <h1>{milestone.title}</h1>
+      <div className="detail-layout">
+        <header className="detail-brandbar">
+          <a className="back-link" href="/"><ArrowLeft size={17} aria-hidden /> Roadmap</a>
+          <a className="detail-brand" href="/">
+            <img src="/labaid-ai-logo.png" alt="Labaid AI" />
+            <span>Labaid AI Roadmap<small>Product development timeline</small></span>
+          </a>
         </header>
 
-        <div className="detail-facts">
-          <section>
-            <span>Version / target</span>
-            <strong>{milestone.version ? `${milestone.version} · ${milestone.title}` : milestone.title}</strong>
-          </section>
-          <section>
-            <span>KPI</span>
-            <strong>{milestone.kpi}</strong>
-          </section>
-        </div>
-      </article>
+        <article className="detail-box">
+          <header className="detail-header">
+            <div className="detail-product">
+              <ProductVisual product={product} />
+              <div>
+                <span>{product.name} · {product.division}</span>
+                <time>{milestone.exactDate}</time>
+              </div>
+            </div>
+            <div className="detail-status">
+              <span>{milestone.status}</span>
+              {milestone.release ? <span><Star size={15} fill="currentColor" aria-hidden /> Release</span> : null}
+            </div>
+            <h1>{milestone.title}</h1>
+          </header>
+
+          <div className="detail-facts">
+            <section>
+              <span>Version / target</span>
+              <strong>{milestone.version ?? milestone.title}</strong>
+            </section>
+            <section>
+              <span>KPI goal</span>
+              <strong>{milestone.kpi}</strong>
+            </section>
+            <section className="description-fact">
+              <span>Short description</span>
+              <p>{milestone.description}</p>
+            </section>
+          </div>
+        </article>
+      </div>
     </main>
   );
 }

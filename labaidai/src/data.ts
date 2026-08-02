@@ -14,10 +14,10 @@ export type Product = {
   name: string;
   division: "Software" | "Hardware";
   description: string;
-  image?: string;
-  imageAlt?: string;
+  image: string;
+  imageAlt: string;
   imagePosition?: string;
-  visual?: "oem" | "face-scan";
+  imageFit?: "cover" | "contain";
   accent: string;
   ink: string;
   wash: string;
@@ -31,7 +31,8 @@ export type Milestone = {
   version?: string;
   title: string;
   kpi: string;
-  status: "Verified" | "Committed" | "Target" | "Proposed" | "Gated" | "External gate";
+  description: string;
+  status: "Verified" | "Committed" | "Target" | "Proposed" | "Approved" | "In development";
   release?: true;
 };
 
@@ -54,8 +55,10 @@ export const products: Product[] = [
     id: "retina-flve",
     name: "Retina-FLVE",
     division: "Software",
-    description: "Face liveness, verification + eKYC for Labaid InsureTech",
-    visual: "face-scan",
+    description: "AI vision for liveness, verification + eKYC",
+    image: "/retina-flve-ai-vision.png",
+    imageAlt: "AI vision eye formed from neural network nodes",
+    imagePosition: "50% 50%",
     accent: "#dc7a1f",
     ink: "#7c420d",
     wash: "#fff2e5",
@@ -65,9 +68,9 @@ export const products: Product[] = [
     name: "DigitalRM",
     division: "Software",
     description: "Aria · universal personal digital employee",
-    image: "/digitalrm-workspace.png",
-    imageAlt: "DigitalRM personal digital employee workspace",
-    imagePosition: "38% 12%",
+    image: "/digitalrm-logo.png",
+    imageAlt: "DigitalRM logo",
+    imageFit: "contain",
     accent: "#8759e8",
     ink: "#4f278e",
     wash: "#f2ecff",
@@ -76,10 +79,10 @@ export const products: Product[] = [
     id: "medpac",
     name: "MedPAC",
     division: "Software",
-    description: "Medical imaging and reporting workflow",
-    image: "/medpac-workspace.png",
-    imageAlt: "MedPAC reporting workspace",
-    imagePosition: "50% 25%",
+    description: "Enterprise PACS, VNA + reporting workflow",
+    image: "/medpac-logo.png",
+    imageAlt: "MedPAC product logo",
+    imageFit: "contain",
     accent: "#23a36d",
     ink: "#145d40",
     wash: "#e8f8ef",
@@ -88,10 +91,10 @@ export const products: Product[] = [
     id: "teleicu",
     name: "TeleICU",
     division: "Software",
-    description: "Remote critical-care monitoring",
-    image: "/teleicu-monitoring.jpg",
-    imageAlt: "Clinical bedside monitoring equipment",
-    imagePosition: "50% 45%",
+    description: "Remote critical-care command centre",
+    image: "/teleicu-command-center.png",
+    imageAlt: "Doctor monitoring live patients and vital signs in a TeleICU command centre",
+    imagePosition: "50% 46%",
     accent: "#d94b8b",
     ink: "#812a55",
     wash: "#ffedf6",
@@ -103,7 +106,7 @@ export const products: Product[] = [
     description: "MedPAC DICOM sync node · OEM delivered",
     image: "/pacman-logo.png",
     imageAlt: "PacMan DICOM Sync product logo",
-    imagePosition: "50% 36%",
+    imageFit: "contain",
     accent: "#5570dc",
     ink: "#30458d",
     wash: "#edf0ff",
@@ -112,8 +115,10 @@ export const products: Product[] = [
     id: "interface-board",
     name: "Interface Board",
     division: "Hardware",
-    description: "Chinese OEM development and delivery",
-    visual: "oem",
+    description: "Purpose-built embedded interface · OEM delivered",
+    image: "/interface-board-embedded.png",
+    imageAlt: "Illustration of a purpose-built embedded interface board",
+    imagePosition: "50% 50%",
     accent: "#168f91",
     ink: "#0b5f61",
     wash: "#e7f8f7",
@@ -129,6 +134,7 @@ export const milestones: Milestone[] = [
     version: "Launch",
     title: "Web, iOS, Android + training",
     kpi: "Production access opened",
+    description: "Launch LUNA across web, iOS and Android, with the presentation and operational training completed.",
     status: "Verified",
     release: true,
   },
@@ -139,6 +145,7 @@ export const milestones: Milestone[] = [
     exactDate: "August 15, 2026",
     title: "AKHIL API + Prism dashboard",
     kpi: "Usage and operating cost visible",
+    description: "Connect AKHIL services and Prism so usage, token consumption and operating cost can be monitored.",
     status: "Committed",
   },
   {
@@ -148,6 +155,7 @@ export const milestones: Milestone[] = [
     exactDate: "September 15, 2026",
     title: "Doctors edition",
     kpi: "Clinician pilot usable",
+    description: "Package LUNA around clinician workflows and make the focused doctors edition usable in a controlled pilot.",
     status: "Target",
   },
   {
@@ -157,6 +165,7 @@ export const milestones: Milestone[] = [
     exactDate: "October 15, 2026",
     title: "Reports + e-prescription",
     kpi: "Report and e-prescription journeys connected",
+    description: "Connect report-status and e-prescription journeys through governed hospital integrations.",
     status: "Target",
   },
   {
@@ -167,6 +176,7 @@ export const milestones: Milestone[] = [
     version: "Version 1.0",
     title: "Delivered · Labaid InsureTech eKYC",
     kpi: "Production eKYC delivered",
+    description: "Retina-FLVE provides face liveness and identity verification for the Labaid InsureTech eKYC journey.",
     status: "Verified",
     release: true,
   },
@@ -178,6 +188,7 @@ export const milestones: Milestone[] = [
     version: "Version 1.1",
     title: "eKYC upgrade",
     kpi: "Upgrade accepted by Labaid InsureTech",
+    description: "Upgrade the delivered eKYC flow while preserving reliable liveness and identity verification.",
     status: "Target",
     release: true,
   },
@@ -189,6 +200,7 @@ export const milestones: Milestone[] = [
     version: "Version 0.1",
     title: "Initial personal assistant release",
     kpi: "100% pilot tasks captured",
+    description: "Release Aria's first usable universal personal-assistant workflow for delegated tasks.",
     status: "Target",
     release: true,
   },
@@ -200,6 +212,7 @@ export const milestones: Milestone[] = [
     version: "Version 0.2",
     title: "Follow-up + handoff release",
     kpi: "≥90% follow-ups logged",
+    description: "Add reliable follow-up tracking and context-preserving human handoffs for delegated work.",
     status: "Target",
     release: true,
   },
@@ -211,6 +224,7 @@ export const milestones: Milestone[] = [
     version: "Version 0.3",
     title: "Intelligence + analytics release",
     kpi: "≥80% priority coverage",
+    description: "Add priority intelligence and analytics over the owner's active tasks, commitments and follow-ups.",
     status: "Target",
     release: true,
   },
@@ -222,6 +236,7 @@ export const milestones: Milestone[] = [
     version: "Version 1.0",
     title: "Pilot rollout release",
     kpi: "≥90% UAT pass",
+    description: "Validate the complete universal personal digital employee workflow with pilot users.",
     status: "Target",
     release: true,
   },
@@ -229,30 +244,32 @@ export const milestones: Milestone[] = [
     slug: "medpac-srs-architecture",
     productId: "medpac",
     month: "AUGUST",
-    exactDate: "August 10–31, 2026",
-    title: "SRS + architecture approval",
-    kpi: "Scope baseline approved",
-    status: "Target",
+    exactDate: "August 10, 2026",
+    title: "SRS approval",
+    kpi: "SRS baseline approved",
+    description: "Approve the enterprise PACS and VNA requirements baseline so scope and architecture decisions are controlled.",
+    status: "Approved",
   },
   {
-    slug: "medpac-v10-readiness",
+    slug: "medpac-screens-app",
     productId: "medpac",
-    month: "AUGUST",
-    exactDate: "August 10–September 30, 2026",
-    version: "Version 1.0",
-    title: "Release readiness",
-    kpi: "14 external gates closed",
-    status: "Gated",
+    month: "SEPTEMBER",
+    exactDate: "September 1, 2026",
+    title: "Screens + doctor app ready",
+    kpi: "Daily screens complete; phone app opens viewer",
+    description: "Complete daily worklist, scheduling and administration screens plus a doctor app that opens the existing MedView mobile viewer.",
+    status: "In development",
   },
   {
     slug: "medpac-v10-release",
     productId: "medpac",
     month: "OCTOBER",
     exactDate: "October 1, 2026",
-    version: "Version 1.0",
-    title: "Early-site release",
-    kpi: "Release gate accepted",
-    status: "External gate",
+    version: "v1",
+    title: "Early release",
+    kpi: "First hospitals live on imaging workflow",
+    description: "Scanners send images and receive worklists; clinicians view, measure, report and sign on production servers with backup and audit.",
+    status: "Target",
     release: true,
   },
   {
@@ -260,9 +277,10 @@ export const milestones: Milestone[] = [
     productId: "medpac",
     month: "NOVEMBER",
     exactDate: "November 1, 2026",
-    version: "Version 1.1",
-    title: "AI, storage + signatures",
-    kpi: "Three workflow upgrades accepted",
+    version: "v2",
+    title: "First feature release",
+    kpi: "AI, storage tiering + signed reports shipped",
+    description: "Ship draft AI findings with human review, storage tiering and cryptographic signatures on signed reports.",
     status: "Target",
     release: true,
   },
@@ -271,9 +289,10 @@ export const milestones: Milestone[] = [
     productId: "medpac",
     month: "DECEMBER",
     exactDate: "December 1, 2026",
-    version: "Version 1.2",
-    title: "HIS connection",
-    kpi: "Patient-to-image journey reconciled",
+    version: "v3",
+    title: "Second feature release",
+    kpi: "Live HIS round-trip + edge node accepted",
+    description: "Ship cancer workflow, richer structured reports, billing extract, live hospital-system integration and the production-ready PacMan edge node.",
     status: "Target",
     release: true,
   },
@@ -284,6 +303,7 @@ export const milestones: Milestone[] = [
     exactDate: "September 28–October 9, 2026",
     title: "Clinical + device definition",
     kpi: "Pilot boundary agreed",
+    description: "Agree the pilot beds, devices, signals, alerts and clinical response workflow before implementation begins.",
     status: "Proposed",
   },
   {
@@ -294,6 +314,7 @@ export const milestones: Milestone[] = [
     version: "Alpha",
     title: "Gateway + dashboard",
     kpi: "Representative device signals visible",
+    description: "Ingest representative bedside-device signals and display them in the remote critical-care command dashboard.",
     status: "Proposed",
   },
   {
@@ -303,6 +324,7 @@ export const milestones: Milestone[] = [
     exactDate: "October 26–November 8, 2026",
     title: "Alerts + patient/device context",
     kpi: "Actionable alert path works",
+    description: "Connect patient context, the reason for an alert and acknowledgement by the remote response team.",
     status: "Proposed",
   },
   {
@@ -312,6 +334,7 @@ export const milestones: Milestone[] = [
     exactDate: "November 9–20, 2026",
     title: "Integrated lab + clinical UAT",
     kpi: "Core scenarios pass safely",
+    description: "Run the complete monitored-bed journey with clinicians, representative devices and integrated hardware.",
     status: "Proposed",
   },
   {
@@ -322,6 +345,7 @@ export const milestones: Milestone[] = [
     version: "MVP",
     title: "Pilot-ready release",
     kpi: "Limited pilot can start",
+    description: "Prepare a controlled TeleICU pilot for named beds, users, devices, response rules and support hours.",
     status: "Target",
     release: true,
   },
@@ -332,6 +356,7 @@ export const milestones: Milestone[] = [
     exactDate: "August 1–31, 2026",
     title: "Specification + OEM partner",
     kpi: "OEM development and delivery agreement signed",
+    description: "Freeze the node requirements and contract the Chinese OEM partner for engineering, manufacture and delivery.",
     status: "Target",
   },
   {
@@ -342,6 +367,7 @@ export const milestones: Milestone[] = [
     version: "EVT stage",
     title: "Units + software image",
     kpi: "Representative units boot and run",
+    description: "Build representative engineering units and validate that the MedPAC software image runs reliably on them.",
     status: "Target",
   },
   {
@@ -351,6 +377,7 @@ export const milestones: Milestone[] = [
     exactDate: "October 15–November 20, 2026",
     title: "Live-site trial",
     kpi: "Site workload remains stable",
+    description: "Run DICOM synchronisation under a real hospital workload and record stability, thermal and service behaviour.",
     status: "Target",
   },
   {
@@ -360,6 +387,7 @@ export const milestones: Milestone[] = [
     exactDate: "December 1, 2026",
     title: "Manufacturing-ready package",
     kpi: "Repeatable OEM build pack released",
+    description: "Release the repeatable OEM manufacturing, test, software-image, installer, spares and replacement package.",
     status: "Target",
     release: true,
   },
@@ -370,6 +398,7 @@ export const milestones: Milestone[] = [
     exactDate: "September 28–October 9, 2026",
     title: "Interface + electrical specification",
     kpi: "Device boundary frozen with OEM partner",
+    description: "Freeze electrical, protocol, isolation and connector requirements with the embedded-system OEM partner.",
     status: "Proposed",
   },
   {
@@ -380,6 +409,7 @@ export const milestones: Milestone[] = [
     version: "EVT 1",
     title: "Schematic, PCB, firmware + build",
     kpi: "EVT 1 boards delivered by OEM",
+    description: "Complete the purpose-built schematic, PCB, embedded firmware and first OEM engineering build.",
     status: "Proposed",
   },
   {
@@ -389,6 +419,7 @@ export const milestones: Milestone[] = [
     exactDate: "October 26–November 13, 2026",
     title: "Bring-up + bench checks",
     kpi: "Critical interfaces pass",
+    description: "Power and test the OEM board, then verify every critical medical-device interface on the bench.",
     status: "Proposed",
   },
   {
@@ -398,6 +429,7 @@ export const milestones: Milestone[] = [
     exactDate: "November 9–20, 2026",
     title: "Integrated hardware/software lab",
     kpi: "End-to-end device path repeatable",
+    description: "Prove the complete bedside-device to TeleICU data path with the interface hardware and software together.",
     status: "Proposed",
   },
   {
@@ -408,6 +440,7 @@ export const milestones: Milestone[] = [
     version: "EVT pilot",
     title: "Pilot-ready package",
     kpi: "Controlled OEM pilot pack delivered",
+    description: "Deliver the controlled EVT hardware, firmware and test package required for the TeleICU pilot.",
     status: "Target",
     release: true,
   },
