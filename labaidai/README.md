@@ -17,3 +17,5 @@ npm run build
 ```
 
 The build creates the portfolio home page and 27 static KPI routes under `dist/kpi`. The production host is `https://labaidai.lifeplusbd.tech`.
+
+The production Nginx templates are in `nginx/`. `bootstrap.conf` is used only for the first certificate request; `labaidai.conf` is the steady-state HTTPS configuration.

@@ -1,7 +1,9 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const projectRoot = resolve(import.meta.dirname, "..");
+const scriptDirectory = dirname(fileURLToPath(import.meta.url));
+const projectRoot = resolve(scriptDirectory, "..");
 const source = await readFile(resolve(projectRoot, "src/data.ts"), "utf8");
 const slugs = [...source.matchAll(/slug:\s*"([^"]+)"/g)].map((match) => match[1]);
 const builtIndex = resolve(projectRoot, "dist/index.html");
